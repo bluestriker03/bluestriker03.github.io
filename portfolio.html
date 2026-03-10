@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Taran — Computer Engineering</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --g0: #f2f7f2;
+      --g1: #deeede;
+      --g2: #b2d4b2;
+      --g3: #7ab87a;
+      --g4: #4a9050;
+      --g5: #1e4d22;
+      --text: #1a2e1a;
+      --muted: #5a7a5a;
+      --border: rgba(122,184,122,0.22);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; background: var(--g0); color: var(--text); overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px; opacity: 0.55;
+    }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 4rem;
+      background: rgba(242,247,242,0.88); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--g5); letter-spacing: 0.04em; }
+    .logo span { color: var(--g4); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.82rem; font-weight: 500; color: var(--muted); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--g4); }
+    section { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 7rem 2rem; }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 4rem; padding-top: 9rem; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--g4); margin-bottom: 1.6rem; }
+    .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1.5px; background: var(--g4); }
+    h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.2rem, 6vw, 5.5rem); font-weight: 600; line-height: 1.08; color: var(--g5); }
+    h1 em { font-style: italic; color: var(--g4); }
+    .hero-sub { margin-top: 1.4rem; font-size: 1rem; color: var(--muted); font-weight: 300; line-height: 1.8; max-width: 420px; }
+    .hero-actions { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; }
+    .btn { padding: 0.72rem 1.7rem; border-radius: 6px; font-size: 0.85rem; font-weight: 500; text-decoration: none; letter-spacing: 0.04em; transition: transform 0.18s, box-shadow 0.18s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-solid { background: var(--g5); color: var(--g1); border: none; }
+    .btn-solid:hover { box-shadow: 0 6px 20px rgba(30,77,34,0.28); }
+    .btn-ghost { background: transparent; color: var(--g5); border: 1.5px solid var(--g5); }
+    .btn-ghost:hover { background: var(--g1); }
+    .hero-right { display: flex; flex-direction: column; gap: 1rem; animation: fadeUp 0.9s 0.3s ease both; }
+    .stat-card { background: rgba(255,255,255,0.72); border: 1px solid var(--border); border-radius: 12px; padding: 1.3rem 1.6rem; display: flex; align-items: center; gap: 1.2rem; backdrop-filter: blur(10px); transition: transform 0.2s; }
+    .stat-card:hover { transform: translateX(4px); }
+    .stat-card:nth-child(2) { margin-left: 2rem; }
+    .stat-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--g1); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+    .stat-label { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+    .stat-value { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--g5); font-weight: 600; margin-top: 0.1rem; }
+
+    /* LABELS & HEADINGS */
+    .label { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--g4); margin-bottom: 1rem; }
+    .label::after { content: ''; display: block; width: 40px; height: 1px; background: var(--g3); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 600; color: var(--g5); line-height: 1.15; }
+    h2 em { font-style: italic; color: var(--g4); }
+
+    /* ABOUT */
+    #about .about-wrap { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: start; margin-top: 3rem; }
+    .big-initial { font-family: 'Cormorant Garamond', serif; font-size: 9rem; line-height: 0.85; color: var(--g2); font-weight: 600; font-style: italic; margin-bottom: 2rem; display: block; }
+    .about-sidebar-facts { display: flex; flex-direction: column; gap: 1.2rem; }
+    .fact { border-left: 2px solid var(--g3); padding-left: 1rem; }
+    .fact-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+    .fact-value { font-size: 0.95rem; color: var(--g5); font-weight: 500; margin-top: 0.2rem; }
+    .about-body p { font-size: 1rem; color: var(--muted); line-height: 1.9; margin-bottom: 1.2rem; font-weight: 300; }
+    .about-body p strong { color: var(--text); font-weight: 500; }
+    .skills-section-title { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--g4); font-weight: 500; margin-top: 1.8rem; margin-bottom: 0.7rem; }
+    .skills-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill { font-size: 0.8rem; color: var(--g5); font-weight: 500; border: 1px solid var(--g2); background: rgba(178,212,178,0.2); padding: 0.35rem 0.9rem; border-radius: 4px; transition: background 0.2s; }
+    .skill:hover { background: var(--g2); }
+
+    /* EXPERIENCE */
+    #experience .exp-list { margin-top: 3rem; }
+    .exp-row { display: grid; grid-template-columns: 200px 1fr; gap: 3rem; align-items: start; padding: 2.2rem 0; border-bottom: 1px solid var(--border); }
+    .exp-row:first-child { border-top: 1px solid var(--border); }
+    .exp-date { font-size: 0.78rem; color: var(--muted); font-weight: 400; letter-spacing: 0.04em; }
+    .exp-place { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; font-weight: 300; font-style: italic; }
+    .exp-role { font-size: 1.05rem; font-weight: 500; color: var(--g5); }
+    .exp-co { font-size: 0.85rem; color: var(--g4); margin-top: 0.2rem; font-weight: 400; margin-bottom: 0.8rem; }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .exp-bullets li { font-size: 0.88rem; color: var(--muted); line-height: 1.7; font-weight: 300; padding-left: 1rem; position: relative; }
+    .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--g3); font-size: 0.8rem; }
+
+    /* PROJECTS */
+    #projects .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 3rem; border: 1px solid var(--border); background: var(--border); border-radius: 14px; overflow: hidden; }
+    .proj-card { background: rgba(255,255,255,0.65); padding: 2rem 1.8rem; transition: background 0.2s; backdrop-filter: blur(8px); }
+    .proj-card:hover { background: rgba(178,212,178,0.25); }
+    .proj-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--g2); font-weight: 600; line-height: 1; margin-bottom: 1rem; }
+    .proj-title { font-size: 1rem; font-weight: 500; color: var(--g5); margin-bottom: 0.3rem; }
+    .proj-context { font-size: 0.75rem; color: var(--g4); font-weight: 500; margin-bottom: 0.7rem; letter-spacing: 0.02em; }
+    .proj-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; font-weight: 300; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .proj-tag { font-size: 0.7rem; color: var(--g4); font-weight: 500; background: rgba(122,184,122,0.15); padding: 0.2rem 0.6rem; border-radius: 3px; letter-spacing: 0.04em; }
+
+    /* EXTRAS */
+    #extras .extras-grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .extra-card { background: rgba(255,255,255,0.65); border: 1px solid var(--border); border-radius: 12px; padding: 1.6rem; backdrop-filter: blur(8px); transition: background 0.2s; }
+    .extra-card:hover { background: rgba(178,212,178,0.2); }
+    .extra-icon { font-size: 1.6rem; margin-bottom: 0.8rem; display: block; }
+    .extra-title { font-size: 0.95rem; font-weight: 500; color: var(--g5); margin-bottom: 0.2rem; }
+    .extra-sub { font-size: 0.78rem; color: var(--g4); margin-bottom: 0.7rem; }
+    .extra-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+    /* CONTACT */
+    #contact { padding-bottom: 10rem; }
+    .contact-box { margin-top: 3rem; background: var(--g5); border-radius: 16px; padding: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .contact-left h3 { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; color: var(--g1); font-weight: 600; line-height: 1.2; }
+    .contact-left h3 em { font-style: italic; color: var(--g3); }
+    .contact-left p { color: var(--g2); font-size: 0.9rem; line-height: 1.8; margin-top: 1rem; font-weight: 300; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
+    .c-link { display: flex; align-items: center; gap: 1rem; color: var(--g1); text-decoration: none; font-size: 0.9rem; font-weight: 400; padding: 1rem 1.2rem; border-radius: 8px; border: 1px solid rgba(178,212,178,0.2); transition: background 0.2s, border-color 0.2s; }
+    .c-link:hover { background: rgba(178,212,178,0.12); border-color: var(--g3); }
+    .c-icon { width: 36px; height: 36px; border-radius: 7px; background: rgba(178,212,178,0.15); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+
+    footer { position: relative; z-index: 1; text-align: center; padding: 2rem; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--border); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-left { animation: fadeUp 0.7s ease both; }
+    .fade { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade.in { opacity: 1; transform: none; }
+
+    @media (max-width: 860px) {
+      nav { padding: 1rem 1.5rem; } .nav-links { gap: 1.2rem; }
+      #hero { grid-template-columns: 1fr; min-height: auto; padding-top: 7rem; }
+      .hero-right { display: none; }
+      #about .about-wrap { grid-template-columns: 1fr; gap: 2rem; } .big-initial { display: none; }
+      #projects .proj-grid { grid-template-columns: 1fr; }
+      .exp-row { grid-template-columns: 1fr; gap: 0.5rem; }
+      .contact-box { grid-template-columns: 1fr; padding: 2.5rem; }
+      #extras .extras-grid { grid-template-columns: 1fr; }
+      section { padding: 5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">taran<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Computer Engineering · University of Toronto</div>
+      <h1>Building things<br>that <em>matter.</em></h1>
+      <p class="hero-sub">Hi, I'm Taran — a Computer Engineering student at UofT with a Minor in AI. I build at the intersection of software, hardware, and data, and I'm always looking for the next meaningful challenge.</p>
+      <div class="hero-actions">
+        <a href="#experience" class="btn btn-solid">View Experience</a>
+        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-card">
+        <div class="stat-icon">🎓</div>
+        <div class="stat-info">
+          <div class="stat-label">Degree</div>
+          <div class="stat-value">BASc Computer Engineering</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🤖</div>
+        <div class="stat-info">
+          <div class="stat-label">Minor</div>
+          <div class="stat-value">Artificial Intelligence</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🏫</div>
+        <div class="stat-info">
+          <div class="stat-label">School</div>
+          <div class="stat-value">University of Toronto</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📅</div>
+        <div class="stat-info">
+          <div class="stat-label">Graduating</div>
+          <div class="stat-value">May 2027</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="fade">
+      <span class="label">About</span>
+      <h2>A little bit about <em>me</em></h2>
+    </div>
+    <div class="about-wrap fade">
+      <div class="about-sidebar">
+        <span class="big-initial">T.</span>
+        <div class="about-sidebar-facts">
+          <div class="fact"><div class="fact-label">University</div><div class="fact-value">University of Toronto</div></div>
+          <div class="fact"><div class="fact-label">Program</div><div class="fact-value">Computer Engineering</div></div>
+          <div class="fact"><div class="fact-label">Minor</div><div class="fact-value">Artificial Intelligence</div></div>
+          <div class="fact"><div class="fact-label">Timeline</div><div class="fact-value">Sept 2021 – May 2027</div></div>
+          <div class="fact"><div class="fact-label">Location</div><div class="fact-value">Toronto, ON</div></div>
+        </div>
+      </div>
+      <div class="about-body">
+        <p>I'm a <strong>Computer Engineering student at the University of Toronto</strong> with a Minor in Artificial Intelligence. I'm drawn to the full stack of engineering — from low-level hardware design in Verilog and C on FPGAs, to deep learning models in PyTorch, to building software that solves real problems.</p>
+        <p>I've worked in <strong>energy infrastructure at Toronto Hydro, academic research at the WHEEL Lab, and communications at the Mobility Network</strong> — each role sharpening my ability to adapt, collaborate, and deliver meaningful results.</p>
+        <p>Outside of engineering I'm into boxing 🥊, exploring new tools, and anything that makes me think differently about a problem.</p>
+        <div class="skills-section-title">Technical Skills</div>
+        <div class="skills-row">
+          <span class="skill">Python</span><span class="skill">C</span><span class="skill">C++</span>
+          <span class="skill">MATLAB</span><span class="skill">Simulink</span><span class="skill">Verilog</span>
+          <span class="skill">PyTorch</span><span class="skill">NumPy</span><span class="skill">Git / GitHub</span>
+          <span class="skill">Docker</span><span class="skill">SAP</span><span class="skill">Alteryx</span>
+          <span class="skill">ModelSim</span><span class="skill">Quartus</span><span class="skill">Logisim</span>
+          <span class="skill">R</span><span class="skill">Excel</span><span class="skill">ObserverXT</span>
+        </div>
+        <div class="skills-section-title">Professional Skills</div>
+        <div class="skills-row">
+          <span class="skill">Communication</span><span class="skill">Teamwork</span>
+          <span class="skill">Problem-Solving</span><span class="skill">Adaptability</span>
+          <span class="skill">Time Management</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="fade">
+      <span class="label">Experience</span>
+      <h2>Where I've <em>worked</em></h2>
+    </div>
+    <div class="exp-list fade">
+
+      <div class="exp-row">
+        <div class="exp-left">
+          <div class="exp-date">Sept 2025 – Present</div>
+          <div class="exp-place">Etobicoke, ON</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Senior Technical Student, Grid Maintenance</div>
+          <div class="exp-co">Toronto Hydro</div>
+          <ul class="exp-bullets">
+            <li>Utilized SAP to dispatch inspectors for site visits, ensuring timely scheduling and accurate tracking of field operations.</li>
+            <li>Generated weekly analytical reports with Alteryx, providing insights to optimize grid maintenance activities.</li>
+            <li>Managed a $3.4M budget through Excel tracking and analyst collaboration, mitigating underspend/overspend risks to meet year-end targets.</li>
+            <li>Coordinated contractor schedules to align deliverables with program timelines, ensuring on-time completion of all assigned units.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-left">
+          <div class="exp-date">May 2024 – Apr 2025</div>
+          <div class="exp-place">Toronto, ON</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Digital Health Design & Evaluation Research Assistant</div>
+          <div class="exp-co">WHEEL Lab, University of Toronto</div>
+          <ul class="exp-bullets">
+            <li>Programmed behavioral codes in ObserverXT for data analysis to support conclusions in published research studies.</li>
+            <li>Conducted t-tests comparing AI Scribe results to non-AI outputs using Excel, R scripts, and Python to generate insights for a published study.</li>
+            <li>Coordinated team schedule via Google Calendar, ensuring regular meetings and timely project completion.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-left">
+          <div class="exp-date">May 2022 – Apr 2024</div>
+          <div class="exp-place">Toronto, ON</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Events & Communication Assistant</div>
+          <div class="exp-co">Mobility Network, University of Toronto</div>
+          <ul class="exp-bullets">
+            <li>Analyzed social media metrics to determine yearly KPIs and inform communication strategy.</li>
+            <li>Created a symposium booklet and event posters using Adobe Suite, Canva, and Inkscape — received positive feedback from organizers.</li>
+            <li>Coordinated logistics for 10+ events with 40–60 attendees each, ensuring smooth execution.</li>
+            <li>Reviewed and edited video captions for AODA compliance by comparing transcripts to real-time video.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="fade">
+      <span class="label">Projects</span>
+      <h2>Things I've <em>built</em></h2>
+    </div>
+    <div class="proj-grid fade">
+
+      <div class="proj-card">
+        <div class="proj-num">01</div>
+        <div class="proj-title">Brain Tumor Classification</div>
+        <div class="proj-context">Applied Fundamentals of Deep Learning · May – Aug 2024</div>
+        <p class="proj-desc">Built a 4-class CNN brain tumor classifier in PyTorch achieving 94.33% test accuracy on 28,000 MRI scans, using a 70/20/10 data split to maximize generalization across unseen data.</p>
+        <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">PyTorch</span><span class="proj-tag">CNN</span><span class="proj-tag">NumPy</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">02</div>
+        <div class="proj-title">GIS Accessibility Map App</div>
+        <div class="proj-context">Software & Communication Design · Jan – Apr 2024</div>
+        <p class="proj-desc">Developed a GIS map application in C++ using OSM data to support individuals with accessibility requirements. Implemented multi-destination Dijkstra with parallel programming and designed an intuitive GTK GUI.</p>
+        <div class="proj-tags"><span class="proj-tag">C++</span><span class="proj-tag">OSM</span><span class="proj-tag">GTK</span><span class="proj-tag">Dijkstra</span><span class="proj-tag">Git</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">03</div>
+        <div class="proj-title">Dots & Boxes on FPGA</div>
+        <div class="proj-context">Computer Architecture · Jan – Apr 2024</div>
+        <p class="proj-desc">Built a 2-player game in C on an FPGA board with hardware inputs, game animations, randomized trap boxes in Level 2, real-time score updates, and audio feedback via FPGA I/O.</p>
+        <div class="proj-tags"><span class="proj-tag">C</span><span class="proj-tag">FPGA</span><span class="proj-tag">Embedded</span><span class="proj-tag">Hardware I/O</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">04</div>
+        <div class="proj-title">RentSafeTO Reporting Redesign</div>
+        <div class="proj-context">Engineering Strategies & Practice II · Jan – Apr 2022</div>
+        <p class="proj-desc">As Project Manager, led the redesign of the City of Toronto's RentSafeTO public reporting system. Defined the project schedule, assessed requirements, and managed a team to meet all stakeholder goals.</p>
+        <div class="proj-tags"><span class="proj-tag">Project Management</span><span class="proj-tag">Systems Design</span><span class="proj-tag">UX</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXTRAS -->
+  <section id="extras">
+    <div class="fade">
+      <span class="label">Beyond the Desk</span>
+      <h2>Extracurriculars &amp; <em>more</em></h2>
+    </div>
+    <div class="extras-grid fade">
+      <div class="extra-card">
+        <span class="extra-icon">🥊</span>
+        <div class="extra-title">Boxing Club Member</div>
+        <div class="extra-sub">Sports & Rec, University of Toronto · Sept – Dec 2024</div>
+        <p class="extra-desc">Attended weekly organized boxing sessions, coached peers on form and technique, and helped foster a supportive team training environment.</p>
+      </div>
+      <div class="extra-card">
+        <span class="extra-icon">📚</span>
+        <div class="extra-title">Relevant Coursework</div>
+        <div class="extra-sub">University of Toronto</div>
+        <p class="extra-desc">Applied Fundamentals of Deep Learning (PyTorch), Computer Networks, Control Systems, Probability & Applications, Computer Architecture (C), Digital Systems (Verilog), Circuit Analysis, Software & Communication Design (C++).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="fade">
+      <span class="label">Contact</span>
+      <h2>Let's <em>talk</em></h2>
+    </div>
+    <div class="contact-box fade">
+      <div class="contact-left">
+        <h3>Open to new<br><em>opportunities.</em></h3>
+        <p>Whether it's an internship, a research collaboration, or just a conversation — I'd love to connect.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:taran@mail.utoronto.ca" class="c-link">
+          <div class="c-icon">✉️</div> taran@mail.utoronto.ca
+        </a>
+        <a href="https://linkedin.com/in/taran" target="_blank" class="c-link">
+          <div class="c-icon">💼</div> linkedin.com/in/taran
+        </a>
+        <a href="https://github.com/taran" target="_blank" class="c-link">
+          <div class="c-icon">🐙</div> github.com/taran
+        </a>
+        <a href="#" class="c-link">
+          <div class="c-icon">📄</div> Download Resume
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Designed & built by Taran · 2025</p>
+  </footer>
+
+  <script>
+    const els = document.querySelectorAll('.fade');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in'), i * 100);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
