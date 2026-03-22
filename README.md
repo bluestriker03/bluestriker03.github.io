@@ -1,5 +1,5 @@
 # portfolio
-#bluestriker03.github.io
+# bluestriker03.github.io
 
 
 > `ssh -p 2222 40.233.78.82`
