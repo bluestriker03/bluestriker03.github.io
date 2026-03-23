@@ -321,10 +321,15 @@
         <span class="hero-name-small">tarandeep</span>
         <span class="hero-name-big">lubana</span>
         <div class="hero-role">computer engineer</div>
-        <div class="hero-school">@university of toronto</div>
+        <div class="hero-school">@ university of toronto</div>
         <div class="hero-actions">
           <a href="#experience" class="btn btn-solid">View Experience</a>
           <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+          <button class="btn-ssh" onclick="
+            navigator.clipboard.writeText('ssh -p 2222 40.233.78.82');
+            this.innerHTML = '<span class=\'ssh-prompt\'>✓</span>&nbsp;copied!';
+            setTimeout(() => { this.innerHTML = '<span class=\'ssh-prompt\'view my terminal portfolio >›_</span>&nbsp;ssh -p 2222 40.233.78.82'; }, 2000);
+          "><span class="ssh-prompt">›_</span>&nbsp;ssh -p 2222 40.233.78.82</button>
         </div>
       </div>
       <div class="hero-right">
