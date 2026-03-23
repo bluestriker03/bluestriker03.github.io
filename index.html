@@ -126,6 +126,33 @@
     .btn-ghost { background: transparent; color: var(--b5); border: 1.5px solid var(--accent); }
     .btn-ghost:hover { background: rgba(90,163,232,0.1); }
 
+    /* SSH BUTTON — distinct terminal style */
+    .btn-ssh-wrap {
+      display: flex; flex-direction: column; gap: 0.35rem;
+    }
+    .btn-ssh-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .btn-ssh {
+      padding: 0.75rem 1.8rem; border-radius: 4px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem; letter-spacing: 0.1em;
+      background: rgba(122,184,240,0.07);
+      color: var(--accent);
+      border: 1px dashed rgba(122,184,240,0.45);
+      cursor: pointer;
+      transition: transform 0.18s, background 0.18s, border-color 0.18s;
+      white-space: nowrap;
+    }
+    .btn-ssh:hover {
+      transform: translateY(-2px);
+      background: rgba(122,184,240,0.14);
+      border-color: var(--accent);
+    }
+    .ssh-prompt { color: var(--b4); }
+
     /* CIRCUIT CANVAS */
     .hero-right {
       position: relative;
@@ -325,11 +352,14 @@
         <div class="hero-actions">
           <a href="#experience" class="btn btn-solid">View Experience</a>
           <a href="#contact" class="btn btn-ghost">Get in Touch</a>
-          <button class="btn-ssh" onclick="
-            navigator.clipboard.writeText('ssh -p 2222 40.233.78.82');
-            this.innerHTML = '<span class=\'ssh-prompt\'>✓</span>&nbsp;copied!';
-            setTimeout(() => { this.innerHTML = '<span class=\'ssh-prompt\'view my terminal portfolio >›_</span>&nbsp;ssh -p 2222 40.233.78.82'; }, 2000);
-          "><span class="ssh-prompt">›_</span>&nbsp;ssh -p 2222 40.233.78.82</button>
+          <div class="btn-ssh-wrap">
+            <span class="hero-school">view my portfolio in the terminal</span>
+            <button class="btn-ssh" onclick="
+              navigator.clipboard.writeText('ssh -p 2222 40.233.78.82');
+              this.innerHTML = '<span class=\'ssh-prompt\'>✓</span>&nbsp;copied!';
+              setTimeout(() => { this.innerHTML = '<span class=\'ssh-prompt\'>›_</span>&nbsp;ssh -p 2222 40.233.78.82'; }, 2000);
+            "><span class="ssh-prompt">›_</span>&nbsp;ssh -p 2222 40.233.78.82</button>
+          </div>
         </div>
       </div>
       <div class="hero-right">
@@ -567,7 +597,6 @@
               const alpha = 0.15 + 0.25 * Math.sin(n.pulse + t * n.speed);
               ctx.beginPath();
               ctx.moveTo(n.x, n.y);
-              // elbow trace: go right then down/up to next
               const midX = (n.x + n2.x) / 2;
               ctx.lineTo(midX, n.y);
               ctx.lineTo(midX, n2.y);
@@ -602,7 +631,6 @@
           const pulse = 0.3 + 0.5 * Math.sin(n.pulse + t * n.speed * 2);
           const size = 1.5 + pulse * 2;
 
-          // glow
           const grd = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, size * 3);
           grd.addColorStop(0, BLUE2 + (pulse * 0.6) + ')');
           grd.addColorStop(1, BLUE2 + '0)');
@@ -611,7 +639,6 @@
           ctx.fillStyle = grd;
           ctx.fill();
 
-          // dot
           ctx.beginPath();
           ctx.arc(n.x, n.y, size * 0.7, 0, Math.PI * 2);
           ctx.fillStyle = BLUE + (0.5 + pulse * 0.4) + ')';
@@ -642,7 +669,6 @@
     function loop(t) {
       angle += 0.0008;
       frame++;
-      // Rebuild nodes occasionally for variety
       if (frame % 180 === 0) buildNodes();
       drawCircuit(t);
       requestAnimationFrame(loop);
