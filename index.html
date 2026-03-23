@@ -16,7 +16,6 @@
       --text: #ddeeff;
       --muted: #7aacdc;
       --border: rgba(90,163,232,0.18);
-      --circuit: rgba(100,170,240,0.35);
       --accent: #7ab8f0;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,10 +30,7 @@
       background: rgba(13,31,60,0.92); backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
-    .logo {
-      font-family: 'Space Mono', monospace;
-      font-size: 1rem; color: var(--b5); letter-spacing: 0.08em;
-    }
+    .logo { font-family: 'Space Mono', monospace; font-size: 1rem; color: var(--b5); letter-spacing: 0.08em; }
     .logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
@@ -49,112 +45,98 @@
     /* HERO */
     #hero {
       min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding: 0 4rem;
-      max-width: 1400px;
-      margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; position: relative; overflow: hidden;
+      padding: 0 4rem; max-width: 1400px; margin: 0 auto;
     }
-
-    .hero-left {
-      padding-top: 5rem;
-      z-index: 2;
-      animation: fadeUp 0.9s ease both;
-    }
-
-    .hero-eyebrow {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 1.4rem;
-      display: flex; align-items: center; gap: 0.8rem;
-    }
-    .hero-eyebrow::before {
-      content: ''; width: 32px; height: 1px; background: var(--accent);
-    }
-
+    .hero-left { padding-top: 5rem; z-index: 2; animation: fadeUp 0.9s ease both; }
     .hero-name-small {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.5rem, 4vw, 3.8rem);
-      font-weight: 400;
-      font-style: italic;
-      color: var(--muted);
-      line-height: 1;
-      display: block;
+      font-weight: 400; font-style: italic;
+      color: var(--muted); line-height: 1; display: block;
     }
-
     .hero-name-big {
       font-family: 'DM Sans', sans-serif;
       font-size: clamp(4rem, 8vw, 8rem);
-      font-weight: 500;
-      color: var(--b5);
-      line-height: 0.92;
-      letter-spacing: -0.02em;
-      display: block;
-      margin-top: 0.1rem;
+      font-weight: 500; color: var(--b5);
+      line-height: 0.92; letter-spacing: -0.02em;
+      display: block; margin-top: 0.1rem;
     }
-
     .hero-role {
       font-family: 'DM Sans', sans-serif;
       font-size: clamp(1.2rem, 2.2vw, 1.8rem);
-      font-weight: 300;
-      color: var(--text);
-      margin-top: 1.2rem;
+      font-weight: 300; color: var(--text); margin-top: 1.2rem;
     }
-
     .hero-school {
       font-family: 'Space Mono', monospace;
-      font-size: 0.85rem;
-      color: var(--accent);
-      margin-top: 0.4rem;
+      font-size: 0.85rem; color: var(--accent); margin-top: 0.4rem;
     }
-
-    .hero-actions {
-      display: flex; gap: 1rem; margin-top: 2.8rem; flex-wrap: wrap;
-    }
+    .hero-actions { display: flex; gap: 1rem; margin-top: 2.8rem; flex-wrap: wrap; align-items: center; }
     .btn {
       padding: 0.75rem 1.8rem; border-radius: 4px;
       font-family: 'Space Mono', monospace;
       font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
       text-decoration: none; transition: transform 0.18s, box-shadow 0.18s;
+      display: inline-flex; align-items: center;
     }
     .btn:hover { transform: translateY(-2px); }
     .btn-solid { background: var(--accent); color: #0d1f3c; }
     .btn-solid:hover { box-shadow: 0 6px 24px rgba(90,163,232,0.4); }
     .btn-ghost { background: transparent; color: var(--b5); border: 1.5px solid var(--accent); }
     .btn-ghost:hover { background: rgba(90,163,232,0.1); }
+    .btn-ssh {
+      background: #0a1628; color: #c8e0f8;
+      border: 1.5px solid rgba(90,163,232,0.3);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem; letter-spacing: 0.04em;
+      cursor: pointer; border-radius: 8px;
+      padding: 0.75rem 1.2rem;
+      transition: background 0.2s, border-color 0.2s, transform 0.18s;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-ssh:hover { background: #112240; border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
+    .ssh-prompt { color: var(--accent); }
 
-    /* CIRCUIT CANVAS */
+    /* BINARY RAIN */
     .hero-right {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
+      position: relative; height: 100vh;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
     }
-    #circuitCanvas {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0; left: 0;
+    .binary-rain {
+      position: absolute; inset: 0;
+      display: flex; align-items: flex-start; overflow: hidden;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 80%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 80%, transparent 100%);
+    }
+    .bin-col {
+      display: flex; flex-direction: column;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem; line-height: 1.6;
+      color: var(--accent); opacity: 0;
+      animation: binFall linear infinite;
+      will-change: transform, opacity;
+      padding: 0 3px; white-space: nowrap; user-select: none;
+    }
+    .bin-col .bright { color: #ffffff; text-shadow: 0 0 8px var(--accent); }
+    @keyframes binFall {
+      0%   { transform: translateY(-100%); opacity: 0; }
+      5%   { opacity: 1; }
+      90%  { opacity: 0.6; }
+      100% { transform: translateY(110vh); opacity: 0; }
     }
 
-    /* Subtle bg grid */
+    /* BG GRID */
     body::before {
       content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
       background-image:
         linear-gradient(var(--border) 1px, transparent 1px),
         linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 48px 48px;
-      opacity: 0.4;
+      background-size: 48px 48px; opacity: 0.4;
     }
 
     /* SECTIONS */
     section { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 7rem 2rem; }
-
     .label {
       display: inline-flex; align-items: center; gap: 0.6rem;
       font-family: 'Space Mono', monospace;
@@ -162,19 +144,11 @@
       text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
     }
     .label::after { content: ''; display: block; width: 40px; height: 1px; background: var(--b3); }
-    h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 600;
-      color: var(--text); line-height: 1.15;
-    }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 600; color: var(--text); line-height: 1.15; }
     h2 em { font-style: italic; color: var(--accent); }
 
     /* ABOUT */
     #about .about-wrap { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: start; margin-top: 3rem; }
-    .big-initial {
-      font-family: 'Cormorant Garamond', serif; font-size: 9rem; line-height: 0.85;
-      color: var(--b2); font-weight: 600; font-style: italic; margin-bottom: 2rem; display: block;
-    }
     .about-sidebar-facts { display: flex; flex-direction: column; gap: 1.2rem; }
     .fact { border-left: 2px solid var(--b3); padding-left: 1rem; }
     .fact-label { font-family: 'Space Mono', monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
@@ -196,94 +170,38 @@
 
     /* EXPERIENCE */
     #experience .exp-list { margin-top: 3rem; }
-    .exp-row {
-      display: grid; grid-template-columns: 200px 1fr; gap: 3rem;
-      align-items: start; padding: 2.2rem 0; border-bottom: 1px solid var(--border);
-    }
+    .exp-row { display: grid; grid-template-columns: 200px 1fr; gap: 3rem; align-items: start; padding: 2.2rem 0; border-bottom: 1px solid var(--border); }
     .exp-row:first-child { border-top: 1px solid var(--border); }
     .exp-date { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--muted); }
     .exp-place { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; font-weight: 300; font-style: italic; }
     .exp-role { font-size: 1.05rem; font-weight: 500; color: var(--text); }
     .exp-co { font-size: 0.85rem; color: var(--accent); margin-top: 0.2rem; font-weight: 400; margin-bottom: 0.8rem; }
     .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .exp-bullets li {
-      font-size: 0.88rem; color: var(--muted); line-height: 1.7;
-      font-weight: 300; padding-left: 1rem; position: relative;
-    }
+    .exp-bullets li { font-size: 0.88rem; color: var(--muted); line-height: 1.7; font-weight: 300; padding-left: 1rem; position: relative; }
     .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--b3); font-size: 0.8rem; }
 
     /* PROJECTS */
-    #projects .proj-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 1px; margin-top: 3rem;
-      border: 1px solid var(--border); background: var(--border);
-      border-radius: 14px; overflow: hidden;
-    }
-    .proj-card {
-      background: rgba(17,34,68,0.85); padding: 2rem 1.8rem;
-      transition: background 0.2s; backdrop-filter: blur(8px);
-    }
+    #projects .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 3rem; border: 1px solid var(--border); background: var(--border); border-radius: 14px; overflow: hidden; }
+    .proj-card { background: rgba(17,34,68,0.85); padding: 2rem 1.8rem; transition: background 0.2s; backdrop-filter: blur(8px); }
     .proj-card:hover { background: rgba(58,130,212,0.15); }
-    .proj-num {
-      font-family: 'Cormorant Garamond', serif; font-size: 2.5rem;
-      color: var(--b3); font-weight: 600; line-height: 1; margin-bottom: 1rem;
-    }
+    .proj-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--b3); font-weight: 600; line-height: 1; margin-bottom: 1rem; }
     .proj-title { font-size: 1rem; font-weight: 500; color: var(--b5); margin-bottom: 0.3rem; }
     .proj-context { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--accent); font-weight: 400; margin-bottom: 0.7rem; }
     .proj-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; font-weight: 300; }
     .proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .proj-tag {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem; color: var(--accent); font-weight: 400;
-      background: rgba(122,184,240,0.15); padding: 0.2rem 0.6rem;
-      border-radius: 3px; letter-spacing: 0.04em;
-    }
-
-    /* EXTRAS */
-    #extras .extras-grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-    .extra-card {
-      background: rgba(17,34,68,0.85); border: 1px solid var(--border);
-      border-radius: 12px; padding: 1.6rem; backdrop-filter: blur(8px); transition: background 0.2s;
-    }
-    .extra-card:hover { background: rgba(58,130,212,0.15); }
-    .extra-icon { font-size: 1.6rem; margin-bottom: 0.8rem; display: block; }
-    .extra-title { font-size: 0.95rem; font-weight: 500; color: var(--text); margin-bottom: 0.2rem; }
-    .extra-sub { font-size: 0.78rem; color: var(--accent); margin-bottom: 0.7rem; }
-    .extra-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+    .proj-tag { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--accent); font-weight: 400; background: rgba(122,184,240,0.15); padding: 0.2rem 0.6rem; border-radius: 3px; letter-spacing: 0.04em; }
 
     /* CONTACT */
     #contact { padding-bottom: 10rem; }
-    .contact-box {
-      margin-top: 3rem; background: rgba(26,58,106,0.7); border: 1px solid rgba(90,163,232,0.25); border-radius: 16px; padding: 4rem;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
-    }
-    .contact-left h3 {
-      font-family: 'Cormorant Garamond', serif; font-size: 2.4rem;
-      color: var(--b5); font-weight: 600; line-height: 1.2;
-    }
+    .contact-box { margin-top: 3rem; background: rgba(26,58,106,0.7); border: 1px solid rgba(90,163,232,0.25); border-radius: 16px; padding: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .contact-left h3 { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; color: var(--b5); font-weight: 600; line-height: 1.2; }
     .contact-left h3 em { font-style: italic; color: var(--accent); }
-    .contact-left p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; margin-top: 1rem; font-weight: 300; }
     .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
-    .c-link {
-      display: flex; align-items: center; gap: 1rem; color: var(--b5);
-      text-decoration: none; font-size: 0.88rem; font-weight: 400;
-      padding: 1rem 1.2rem; border-radius: 8px;
-      border: 1px solid rgba(90,163,232,0.2);
-      transition: background 0.2s, border-color 0.2s;
-    }
+    .c-link { display: flex; align-items: center; gap: 1rem; color: var(--b5); text-decoration: none; font-size: 0.88rem; font-weight: 400; padding: 1rem 1.2rem; border-radius: 8px; border: 1px solid rgba(90,163,232,0.2); transition: background 0.2s, border-color 0.2s; }
     .c-link:hover { background: rgba(90,163,232,0.12); border-color: var(--accent); }
-    .c-icon {
-      width: 36px; height: 36px; border-radius: 7px;
-      background: rgba(90,163,232,0.15);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; flex-shrink: 0;
-    }
+    .c-icon { width: 36px; height: 36px; border-radius: 7px; background: rgba(90,163,232,0.15); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
 
-    footer {
-      position: relative; z-index: 1; text-align: center; padding: 2rem;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.75rem; color: var(--muted); border-top: 1px solid var(--border);
-    }
+    footer { position: relative; z-index: 1; text-align: center; padding: 2rem; font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--muted); border-top: 1px solid var(--border); }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     .fade { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
@@ -293,11 +211,10 @@
       nav { padding: 1rem 1.5rem; } .nav-links { gap: 1rem; }
       #hero { grid-template-columns: 1fr; padding: 2rem; padding-top: 6rem; }
       .hero-right { display: none; }
-      #about .about-wrap { grid-template-columns: 1fr; gap: 2rem; } .big-initial { display: none; }
+      #about .about-wrap { grid-template-columns: 1fr; gap: 2rem; }
       #projects .proj-grid { grid-template-columns: 1fr; }
       .exp-row { grid-template-columns: 1fr; gap: 0.5rem; }
       .contact-box { grid-template-columns: 1fr; padding: 2.5rem; }
-      #extras .extras-grid { grid-template-columns: 1fr; }
       section { padding: 5rem 1.5rem; }
     }
   </style>
@@ -325,10 +242,15 @@
         <div class="hero-actions">
           <a href="#experience" class="btn btn-solid">View Experience</a>
           <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+          <button class="btn-ssh" onclick="
+            navigator.clipboard.writeText('ssh -p 2222 40.233.78.82');
+            this.innerHTML = '<span class=\'ssh-prompt\'>✓</span>&nbsp;copied!';
+            setTimeout(() => { this.innerHTML = '<span class=\'ssh-prompt\'>›_</span>&nbsp;ssh -p 2222 40.233.78.82'; }, 2000);
+          "><span class="ssh-prompt">›_</span>&nbsp;ssh -p 2222 40.233.78.82</button>
         </div>
       </div>
       <div class="hero-right">
-        <canvas id="circuitCanvas"></canvas>
+        <div class="binary-rain" id="binaryRain"></div>
       </div>
     </section>
   </div>
@@ -340,7 +262,6 @@
     </div>
     <div class="about-wrap fade">
       <div class="about-sidebar">
-
         <div class="about-sidebar-facts">
           <div class="fact"><div class="fact-label">University</div><div class="fact-value">University of Toronto</div></div>
           <div class="fact"><div class="fact-label">Program</div><div class="fact-value">Computer Engineering</div></div>
@@ -500,152 +421,37 @@
   </footer>
 
   <script>
-    // ── CIRCUIT BOARD ANIMATION ──────────────────────────────────────────────
-    const canvas = document.getElementById('circuitCanvas');
-    const ctx = canvas.getContext('2d');
-
-    let W, H, nodes, angle = 0;
-
-    const BLUE = 'rgba(90,163,232,';
-    const BLUE2 = 'rgba(58,130,212,';
-
-    function resize() {
-      W = canvas.width = canvas.offsetWidth;
-      H = canvas.height = canvas.offsetHeight;
-      buildNodes();
-    }
-
-    function buildNodes() {
-      nodes = [];
-      const COLS = 12, ROWS = 14;
-      const gw = W / COLS, gh = H / ROWS;
-      for (let r = 0; r <= ROWS; r++) {
-        for (let c = 0; c <= COLS; c++) {
-          const jitter = 0;
-          nodes.push({
-            x: c * gw + jitter,
-            y: r * gh + jitter,
-            active: Math.random() > 0.35,
-            pulse: Math.random() * Math.PI * 2,
-            speed: 0.012 + Math.random() * 0.018
-          });
+    // ── BINARY RAIN ───────────────────────────────────────────────────────────
+    (function() {
+      const container = document.getElementById('binaryRain');
+      const COLS = 18, ROWS = 36;
+      for (let c = 0; c < COLS; c++) {
+        const col = document.createElement('div');
+        col.className = 'bin-col';
+        const brightRow = Math.floor(Math.random() * ROWS);
+        let html = '';
+        for (let r = 0; r < ROWS; r++) {
+          const bit = Math.random() > 0.5 ? '1' : '0';
+          html += r === brightRow ? `<span class="bright">${bit}</span>\n` : `${bit}\n`;
         }
-      }
-    }
-
-    const COLS = 12;
-    function getNode(r, c) {
-      return nodes[r * (COLS + 1) + c];
-    }
-
-    function drawCircuit(t) {
-      ctx.clearRect(0, 0, W, H);
-
-      const cx = W / 2, cy = H / 2;
-      ctx.save();
-      ctx.translate(cx, cy);
-      ctx.rotate(angle);
-      ctx.translate(-cx, -cy);
-
-      const ROWS = 14;
-
-      // Draw traces (horizontal + vertical)
-      for (let r = 0; r <= ROWS; r++) {
-        for (let c = 0; c <= COLS; c++) {
-          const n = getNode(r, c);
-          if (!n.active) continue;
-
-          // horizontal
-          if (c < COLS) {
-            const n2 = getNode(r, c + 1);
-            if (n2.active && Math.random() > 0.08) {
-              const alpha = 0.15 + 0.25 * Math.sin(n.pulse + t * n.speed);
-              ctx.beginPath();
-              ctx.moveTo(n.x, n.y);
-              // elbow trace: go right then down/up to next
-              const midX = (n.x + n2.x) / 2;
-              ctx.lineTo(midX, n.y);
-              ctx.lineTo(midX, n2.y);
-              ctx.lineTo(n2.x, n2.y);
-              ctx.strokeStyle = BLUE + alpha + ')';
-              ctx.lineWidth = 1;
-              ctx.stroke();
-            }
+        col.innerHTML = html;
+        const duration = (4 + Math.random() * 8).toFixed(2);
+        const delay    = (-Math.random() * 12).toFixed(2);
+        col.style.animationDuration = `${duration}s`;
+        col.style.animationDelay    = `${delay}s`;
+        col.style.opacity           = (0.15 + Math.random() * 0.5).toFixed(2);
+        container.appendChild(col);
+        setInterval(() => {
+          const nb = Math.floor(Math.random() * ROWS);
+          let h = '';
+          for (let r = 0; r < ROWS; r++) {
+            const bit = Math.random() > 0.5 ? '1' : '0';
+            h += r === nb ? `<span class="bright">${bit}</span>\n` : `${bit}\n`;
           }
-
-          // vertical
-          if (r < ROWS) {
-            const n2 = getNode(r + 1, c);
-            if (n2.active && Math.random() > 0.08) {
-              const alpha = 0.12 + 0.2 * Math.sin(n.pulse + t * n.speed + 1);
-              ctx.beginPath();
-              ctx.moveTo(n.x, n.y);
-              ctx.lineTo(n.x, n2.y);
-              ctx.strokeStyle = BLUE + alpha + ')';
-              ctx.lineWidth = 1;
-              ctx.stroke();
-            }
-          }
-        }
+          col.innerHTML = h;
+        }, parseFloat(duration) * 900);
       }
-
-      // Draw nodes (dots)
-      for (let r = 0; r <= ROWS; r++) {
-        for (let c = 0; c <= COLS; c++) {
-          const n = getNode(r, c);
-          if (!n.active) continue;
-          const pulse = 0.3 + 0.5 * Math.sin(n.pulse + t * n.speed * 2);
-          const size = 1.5 + pulse * 2;
-
-          // glow
-          const grd = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, size * 3);
-          grd.addColorStop(0, BLUE2 + (pulse * 0.6) + ')');
-          grd.addColorStop(1, BLUE2 + '0)');
-          ctx.beginPath();
-          ctx.arc(n.x, n.y, size * 3, 0, Math.PI * 2);
-          ctx.fillStyle = grd;
-          ctx.fill();
-
-          // dot
-          ctx.beginPath();
-          ctx.arc(n.x, n.y, size * 0.7, 0, Math.PI * 2);
-          ctx.fillStyle = BLUE + (0.5 + pulse * 0.4) + ')';
-          ctx.fill();
-        }
-      }
-
-      // Travelling signal pulses
-      const pulseCount = 5;
-      for (let i = 0; i < pulseCount; i++) {
-        const progress = ((t * 0.0004 + i / pulseCount) % 1);
-        const px = progress * W;
-        const py = (Math.sin(progress * Math.PI * 3 + i * 1.5) * 0.3 + 0.5) * H;
-
-        const grd = ctx.createRadialGradient(px, py, 0, px, py, 18);
-        grd.addColorStop(0, 'rgba(122,184,240,0.7)');
-        grd.addColorStop(1, 'rgba(122,184,240,0)');
-        ctx.beginPath();
-        ctx.arc(px, py, 18, 0, Math.PI * 2);
-        ctx.fillStyle = grd;
-        ctx.fill();
-      }
-
-      ctx.restore();
-    }
-
-    let frame = 0;
-    function loop(t) {
-      angle += 0.0008;
-      frame++;
-      // Rebuild nodes occasionally for variety
-      if (frame % 180 === 0) buildNodes();
-      drawCircuit(t);
-      requestAnimationFrame(loop);
-    }
-
-    window.addEventListener('resize', resize);
-    resize();
-    requestAnimationFrame(loop);
+    })();
 
     // ── SCROLL FADE IN ────────────────────────────────────────────────────────
     const els = document.querySelectorAll('.fade');
