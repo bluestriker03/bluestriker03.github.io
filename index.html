@@ -32,9 +32,22 @@
       border-bottom: 1px solid var(--border);
     }
     .logo {
-      font-family: 'Space Mono', monospace;
-      font-size: 1rem; color: var(--b5); letter-spacing: 0.08em;
-    }
+  cursor: default;
+}
+.logo-portrait {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.8px;
+  line-height: 1.15;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  white-space: pre;
+  display: block;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+.logo:hover .logo-portrait {
+  opacity: 1;
+}
     .logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
