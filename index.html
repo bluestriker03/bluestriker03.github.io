@@ -16,6 +16,7 @@
       --text: #ddeeff;
       --muted: #7aacdc;
       --border: rgba(90,163,232,0.18);
+      --circuit: rgba(100,170,240,0.35);
       --accent: #7ab8f0;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,7 +31,10 @@
       background: rgba(13,31,60,0.92); backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
-    .logo { font-family: 'Space Mono', monospace; font-size: 1rem; color: var(--b5); letter-spacing: 0.08em; }
+    .logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem; color: var(--b5); letter-spacing: 0.08em;
+    }
     .logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
@@ -45,147 +49,112 @@
     /* HERO */
     #hero {
       min-height: 100vh;
-      display: grid; grid-template-columns: 1fr 1fr;
-      align-items: center; position: relative; overflow: hidden;
-      padding: 0 4rem; max-width: 1400px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
     }
-    .hero-left { padding-top: 5rem; z-index: 2; animation: fadeUp 0.9s ease both; }
+
+    .hero-left {
+      padding-top: 5rem;
+      z-index: 2;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1.4rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 32px; height: 1px; background: var(--accent);
+    }
+
     .hero-name-small {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.5rem, 4vw, 3.8rem);
-      font-weight: 400; font-style: italic;
-      color: var(--muted); line-height: 1; display: block;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--muted);
+      line-height: 1;
+      display: block;
     }
+
     .hero-name-big {
       font-family: 'DM Sans', sans-serif;
       font-size: clamp(4rem, 8vw, 8rem);
-      font-weight: 500; color: var(--b5);
-      line-height: 0.92; letter-spacing: -0.02em;
-      display: block; margin-top: 0.1rem;
+      font-weight: 500;
+      color: var(--b5);
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      display: block;
+      margin-top: 0.1rem;
     }
+
     .hero-role {
       font-family: 'DM Sans', sans-serif;
       font-size: clamp(1.2rem, 2.2vw, 1.8rem);
-      font-weight: 300; color: var(--text); margin-top: 1.2rem;
+      font-weight: 300;
+      color: var(--text);
+      margin-top: 1.2rem;
     }
+
     .hero-school {
       font-family: 'Space Mono', monospace;
-      font-size: 0.85rem; color: var(--accent); margin-top: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-top: 0.4rem;
     }
-    .hero-actions { display: flex; gap: 1rem; margin-top: 2.8rem; flex-wrap: wrap; align-items: center; }
+
+    .hero-actions {
+      display: flex; gap: 1rem; margin-top: 2.8rem; flex-wrap: wrap;
+    }
     .btn {
       padding: 0.75rem 1.8rem; border-radius: 4px;
       font-family: 'Space Mono', monospace;
       font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
       text-decoration: none; transition: transform 0.18s, box-shadow 0.18s;
-      display: inline-flex; align-items: center;
     }
     .btn:hover { transform: translateY(-2px); }
     .btn-solid { background: var(--accent); color: #0d1f3c; }
     .btn-solid:hover { box-shadow: 0 6px 24px rgba(90,163,232,0.4); }
     .btn-ghost { background: transparent; color: var(--b5); border: 1.5px solid var(--accent); }
     .btn-ghost:hover { background: rgba(90,163,232,0.1); }
-    .btn-ssh {
-      background: #0a1628; color: #c8e0f8;
-      border: 1.5px solid rgba(90,163,232,0.3);
-      font-family: 'Space Mono', monospace;
-      font-size: 0.72rem; letter-spacing: 0.04em;
-      cursor: pointer; border-radius: 8px;
-      padding: 0.75rem 1.2rem;
-      transition: background 0.2s, border-color 0.2s, transform 0.18s;
-      display: inline-flex; align-items: center; gap: 0.5rem;
-    }
-    .btn-ssh:hover { background: #112240; border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
-    .ssh-prompt { color: var(--accent); }
 
-    /* MODELSIM */
+    /* CIRCUIT CANVAS */
     .hero-right {
-      position: relative; height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      padding: 2rem 0;
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
     }
-    .modelsim-container {
-      width: 100%; max-width: 520px;
-      background: #0a0f0a; border: 1px solid #1a5c1a;
-      border-radius: 4px; overflow: hidden;
-      box-shadow: 0 0 40px rgba(0,200,0,0.08), 0 20px 60px rgba(0,0,0,0.6);
-      font-family: 'Space Mono', monospace;
-      display: flex; flex-direction: column;
+    #circuitCanvas {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0; left: 0;
     }
-    .ms-titlebar {
-      background: #0d1f0d; border-bottom: 1px solid #1a5c1a;
-      padding: 0.4rem 0.8rem;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .ms-title { font-size: 0.65rem; color: #5aaa5a; letter-spacing: 0.08em; }
-    .ms-winbtns { display: flex; gap: 0.4rem; }
-    .ms-winbtns span { width: 10px; height: 10px; border-radius: 50%; background: #1a5c1a; }
-    .ms-toolbar {
-      background: #0d1f0d; border-bottom: 1px solid #163016;
-      padding: 0.3rem 0.8rem;
-      display: flex; align-items: center; gap: 0.6rem;
-    }
-    .ms-tb-btn { font-size: 0.6rem; color: #4a9a4a; cursor: pointer; padding: 0.15rem 0.35rem; border: 1px solid #1a5c1a; border-radius: 2px; }
-    .ms-tb-btn:hover { background: #1a3a1a; }
-    .ms-tb-sep { width: 1px; height: 12px; background: #1a5c1a; margin: 0 0.2rem; }
-    .ms-tb-label { font-size: 0.6rem; color: #3a7a3a; margin-left: auto; }
-    .ms-tb-label span { color: #7acc7a; }
-    .ms-wave-panel {
-      display: flex; background: #080d08;
-      border-bottom: 1px solid #163016;
-    }
-    .ms-signals {
-      width: 110px; flex-shrink: 0;
-      border-right: 1px solid #1a5c1a;
-      background: #0a0f0a;
-    }
-    .ms-sig {
-      font-size: 0.58rem; color: #7acc7a;
-      padding: 0 0.6rem;
-      height: 28px; display: flex; align-items: center;
-      border-bottom: 1px solid #0f1f0f;
-      white-space: nowrap; overflow: hidden;
-    }
-    .ms-waves { flex: 1; overflow: hidden; position: relative; }
-    #waveCanvas { display: block; }
-    /* TERMINAL */
-    .ms-terminal { background: #050a05; flex: 1; }
-    .ms-term-bar {
-      background: #0d1a0d; border-bottom: 1px solid #163016;
-      padding: 0.35rem 0.8rem;
-      display: flex; align-items: center; gap: 0.4rem;
-    }
-    .ms-term-dot { width: 9px; height: 9px; border-radius: 50%; }
-    .ms-term-dot.red { background: #3a1010; }
-    .ms-term-dot.yellow { background: #2a2a10; }
-    .ms-term-dot.green { background: #1a4a1a; }
-    .ms-term-title { font-size: 0.6rem; color: #3a6a3a; margin-left: 0.4rem; letter-spacing: 0.06em; }
-    .ms-term-body {
-      padding: 0.6rem 0.8rem;
-      font-size: 0.65rem; line-height: 1.7;
-      color: #7acc7a; min-height: 130px; max-height: 130px;
-      overflow: hidden;
-    }
-    .term-line { display: block; white-space: pre; }
-    .term-prompt { color: #4a9a4a; }
-    .term-cmd { color: #aaddaa; }
-    .term-out { color: #5a8a5a; }
-    .term-highlight { color: #b8f8b8; font-weight: bold; }
-    .term-accent { color: var(--accent); }
-    .term-cursor { display: inline-block; width: 7px; height: 12px; background: #7acc7a; animation: blink 1s step-end infinite; vertical-align: middle; }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-    /* BG GRID */
+    /* Subtle bg grid */
     body::before {
       content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
       background-image:
         linear-gradient(var(--border) 1px, transparent 1px),
         linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 48px 48px; opacity: 0.4;
+      background-size: 48px 48px;
+      opacity: 0.4;
     }
 
     /* SECTIONS */
     section { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 7rem 2rem; }
+
     .label {
       display: inline-flex; align-items: center; gap: 0.6rem;
       font-family: 'Space Mono', monospace;
@@ -193,11 +162,19 @@
       text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
     }
     .label::after { content: ''; display: block; width: 40px; height: 1px; background: var(--b3); }
-    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 600; color: var(--text); line-height: 1.15; }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 600;
+      color: var(--text); line-height: 1.15;
+    }
     h2 em { font-style: italic; color: var(--accent); }
 
     /* ABOUT */
     #about .about-wrap { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: start; margin-top: 3rem; }
+    .big-initial {
+      font-family: 'Cormorant Garamond', serif; font-size: 9rem; line-height: 0.85;
+      color: var(--b2); font-weight: 600; font-style: italic; margin-bottom: 2rem; display: block;
+    }
     .about-sidebar-facts { display: flex; flex-direction: column; gap: 1.2rem; }
     .fact { border-left: 2px solid var(--b3); padding-left: 1rem; }
     .fact-label { font-family: 'Space Mono', monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
@@ -219,38 +196,94 @@
 
     /* EXPERIENCE */
     #experience .exp-list { margin-top: 3rem; }
-    .exp-row { display: grid; grid-template-columns: 200px 1fr; gap: 3rem; align-items: start; padding: 2.2rem 0; border-bottom: 1px solid var(--border); }
+    .exp-row {
+      display: grid; grid-template-columns: 200px 1fr; gap: 3rem;
+      align-items: start; padding: 2.2rem 0; border-bottom: 1px solid var(--border);
+    }
     .exp-row:first-child { border-top: 1px solid var(--border); }
     .exp-date { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--muted); }
     .exp-place { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; font-weight: 300; font-style: italic; }
     .exp-role { font-size: 1.05rem; font-weight: 500; color: var(--text); }
     .exp-co { font-size: 0.85rem; color: var(--accent); margin-top: 0.2rem; font-weight: 400; margin-bottom: 0.8rem; }
     .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .exp-bullets li { font-size: 0.88rem; color: var(--muted); line-height: 1.7; font-weight: 300; padding-left: 1rem; position: relative; }
+    .exp-bullets li {
+      font-size: 0.88rem; color: var(--muted); line-height: 1.7;
+      font-weight: 300; padding-left: 1rem; position: relative;
+    }
     .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--b3); font-size: 0.8rem; }
 
     /* PROJECTS */
-    #projects .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 3rem; border: 1px solid var(--border); background: var(--border); border-radius: 14px; overflow: hidden; }
-    .proj-card { background: rgba(17,34,68,0.85); padding: 2rem 1.8rem; transition: background 0.2s; backdrop-filter: blur(8px); }
+    #projects .proj-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1px; margin-top: 3rem;
+      border: 1px solid var(--border); background: var(--border);
+      border-radius: 14px; overflow: hidden;
+    }
+    .proj-card {
+      background: rgba(17,34,68,0.85); padding: 2rem 1.8rem;
+      transition: background 0.2s; backdrop-filter: blur(8px);
+    }
     .proj-card:hover { background: rgba(58,130,212,0.15); }
-    .proj-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--b3); font-weight: 600; line-height: 1; margin-bottom: 1rem; }
+    .proj-num {
+      font-family: 'Cormorant Garamond', serif; font-size: 2.5rem;
+      color: var(--b3); font-weight: 600; line-height: 1; margin-bottom: 1rem;
+    }
     .proj-title { font-size: 1rem; font-weight: 500; color: var(--b5); margin-bottom: 0.3rem; }
     .proj-context { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--accent); font-weight: 400; margin-bottom: 0.7rem; }
     .proj-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; font-weight: 300; }
     .proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .proj-tag { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--accent); font-weight: 400; background: rgba(122,184,240,0.15); padding: 0.2rem 0.6rem; border-radius: 3px; letter-spacing: 0.04em; }
+    .proj-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem; color: var(--accent); font-weight: 400;
+      background: rgba(122,184,240,0.15); padding: 0.2rem 0.6rem;
+      border-radius: 3px; letter-spacing: 0.04em;
+    }
+
+    /* EXTRAS */
+    #extras .extras-grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .extra-card {
+      background: rgba(17,34,68,0.85); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.6rem; backdrop-filter: blur(8px); transition: background 0.2s;
+    }
+    .extra-card:hover { background: rgba(58,130,212,0.15); }
+    .extra-icon { font-size: 1.6rem; margin-bottom: 0.8rem; display: block; }
+    .extra-title { font-size: 0.95rem; font-weight: 500; color: var(--text); margin-bottom: 0.2rem; }
+    .extra-sub { font-size: 0.78rem; color: var(--accent); margin-bottom: 0.7rem; }
+    .extra-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
 
     /* CONTACT */
     #contact { padding-bottom: 10rem; }
-    .contact-box { margin-top: 3rem; background: rgba(26,58,106,0.7); border: 1px solid rgba(90,163,232,0.25); border-radius: 16px; padding: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-    .contact-left h3 { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; color: var(--b5); font-weight: 600; line-height: 1.2; }
+    .contact-box {
+      margin-top: 3rem; background: rgba(26,58,106,0.7); border: 1px solid rgba(90,163,232,0.25); border-radius: 16px; padding: 4rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+    }
+    .contact-left h3 {
+      font-family: 'Cormorant Garamond', serif; font-size: 2.4rem;
+      color: var(--b5); font-weight: 600; line-height: 1.2;
+    }
     .contact-left h3 em { font-style: italic; color: var(--accent); }
+    .contact-left p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; margin-top: 1rem; font-weight: 300; }
     .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
-    .c-link { display: flex; align-items: center; gap: 1rem; color: var(--b5); text-decoration: none; font-size: 0.88rem; font-weight: 400; padding: 1rem 1.2rem; border-radius: 8px; border: 1px solid rgba(90,163,232,0.2); transition: background 0.2s, border-color 0.2s; }
+    .c-link {
+      display: flex; align-items: center; gap: 1rem; color: var(--b5);
+      text-decoration: none; font-size: 0.88rem; font-weight: 400;
+      padding: 1rem 1.2rem; border-radius: 8px;
+      border: 1px solid rgba(90,163,232,0.2);
+      transition: background 0.2s, border-color 0.2s;
+    }
     .c-link:hover { background: rgba(90,163,232,0.12); border-color: var(--accent); }
-    .c-icon { width: 36px; height: 36px; border-radius: 7px; background: rgba(90,163,232,0.15); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .c-icon {
+      width: 36px; height: 36px; border-radius: 7px;
+      background: rgba(90,163,232,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
 
-    footer { position: relative; z-index: 1; text-align: center; padding: 2rem; font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--muted); border-top: 1px solid var(--border); }
+    footer {
+      position: relative; z-index: 1; text-align: center; padding: 2rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem; color: var(--muted); border-top: 1px solid var(--border);
+    }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     .fade { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
@@ -260,10 +293,11 @@
       nav { padding: 1rem 1.5rem; } .nav-links { gap: 1rem; }
       #hero { grid-template-columns: 1fr; padding: 2rem; padding-top: 6rem; }
       .hero-right { display: none; }
-      #about .about-wrap { grid-template-columns: 1fr; gap: 2rem; }
+      #about .about-wrap { grid-template-columns: 1fr; gap: 2rem; } .big-initial { display: none; }
       #projects .proj-grid { grid-template-columns: 1fr; }
       .exp-row { grid-template-columns: 1fr; gap: 0.5rem; }
       .contact-box { grid-template-columns: 1fr; padding: 2.5rem; }
+      #extras .extras-grid { grid-template-columns: 1fr; }
       section { padding: 5rem 1.5rem; }
     }
   </style>
@@ -291,54 +325,10 @@
         <div class="hero-actions">
           <a href="#experience" class="btn btn-solid">View Experience</a>
           <a href="#contact" class="btn btn-ghost">Get in Touch</a>
-          <button class="btn-ssh" onclick="
-            navigator.clipboard.writeText('ssh -p 2222 40.233.78.82');
-            this.innerHTML = '<span class=\'ssh-prompt\'>✓</span>&nbsp;copied!';
-            setTimeout(() => { this.innerHTML = '<span class=\'ssh-prompt\'>›_</span>&nbsp;ssh -p 2222 40.233.78.82'; }, 2000);
-          "><span class="ssh-prompt">›_</span>&nbsp;ssh -p 2222 40.233.78.82</button>
         </div>
       </div>
       <div class="hero-right">
-        <div class="modelsim-container" id="modelsim">
-          <!-- Title bar -->
-          <div class="ms-titlebar">
-            <span class="ms-title">ModelSim — Wave</span>
-            <div class="ms-winbtns"><span></span><span></span><span></span></div>
-          </div>
-          <!-- Toolbar -->
-          <div class="ms-toolbar">
-            <span class="ms-tb-btn">▶</span>
-            <span class="ms-tb-btn">⏸</span>
-            <span class="ms-tb-btn">⏹</span>
-            <span class="ms-tb-sep"></span>
-            <span class="ms-tb-label">Time: <span id="ms-time">0 ns</span></span>
-          </div>
-          <!-- Wave panel -->
-          <div class="ms-wave-panel">
-            <div class="ms-signals">
-              <div class="ms-sig">clk</div>
-              <div class="ms-sig">rst_n</div>
-              <div class="ms-sig">data_in[3:0]</div>
-              <div class="ms-sig">data_out[3:0]</div>
-              <div class="ms-sig">valid</div>
-              <div class="ms-sig">ready</div>
-              <div class="ms-sig">addr[7:0]</div>
-            </div>
-            <div class="ms-waves" id="msWaves">
-              <canvas id="waveCanvas"></canvas>
-            </div>
-          </div>
-          <!-- Terminal below -->
-          <div class="ms-terminal" id="msTerminal">
-            <div class="ms-term-bar">
-              <span class="ms-term-dot red"></span>
-              <span class="ms-term-dot yellow"></span>
-              <span class="ms-term-dot green"></span>
-              <span class="ms-term-title">bash — taran@portfolio</span>
-            </div>
-            <div class="ms-term-body" id="termBody"></div>
-          </div>
-        </div>
+        <canvas id="circuitCanvas"></canvas>
       </div>
     </section>
   </div>
@@ -350,6 +340,7 @@
     </div>
     <div class="about-wrap fade">
       <div class="about-sidebar">
+
         <div class="about-sidebar-facts">
           <div class="fact"><div class="fact-label">University</div><div class="fact-value">University of Toronto</div></div>
           <div class="fact"><div class="fact-label">Program</div><div class="fact-value">Computer Engineering</div></div>
@@ -491,7 +482,7 @@
         <h3>Open to new<br><em>conversations and perspectives.</em></h3>
       </div>
       <div class="contact-links">
-        <a href="/cdn-cgi/l/email-protection#fb978f9a899a959f9e9e8bbb9c969a9297d5989496" class="c-link">
+        <a href="mailto:ltarandeep@gmail.com" class="c-link">
           <div class="c-icon">💌</div> Email
         </a>
         <a href="https://www.linkedin.com/in/tarandeep-lubana/" target="_blank" class="c-link">
@@ -508,215 +499,153 @@
     <p>Tarandeep Lubana</p>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // ── MODELSIM WAVEFORM ─────────────────────────────────────────────────────
-    (function() {
-      const canvas = document.getElementById('waveCanvas');
-      const panel  = document.getElementById('msWaves');
-      const ctx    = canvas.getContext('2d');
-      const SIG_H  = 28;
-      const SIGS   = 7;
-      const GREEN  = '#3acc3a';
-      const GREEN2 = '#1a6a1a';
-      const GRID   = '#0f1f0f';
+  <script>
+    // ── CIRCUIT BOARD ANIMATION ──────────────────────────────────────────────
+    const canvas = document.getElementById('circuitCanvas');
+    const ctx = canvas.getContext('2d');
 
-      let W, offset = 0, simTime = 0;
-      const CLK_PERIOD = 40;
+    let W, H, nodes, angle = 0;
 
-      // Pre-generate signal data
-      const signals = [
-        { type: 'clock', period: CLK_PERIOD },
-        { type: 'bus',   values: ['1','1','1','1','1','1','1','1'], period: CLK_PERIOD * 4 },
-        { type: 'bus',   values: ['0000','0010','0101','1010','1100','0011','0110','1111'], period: CLK_PERIOD * 4 },
-        { type: 'bus',   values: ['0000','0001','0100','1011','1100','0010','0101','1110'], period: CLK_PERIOD * 4 },
-        { type: 'logic', values: [0,0,1,1,0,1,1,0,1,0,1,1], period: CLK_PERIOD * 2 },
-        { type: 'logic', values: [1,1,0,0,1,1,0,1,0,1,1,0], period: CLK_PERIOD * 2 },
-        { type: 'bus',   values: ['00','04','08','0C','10','14','18','1C'], period: CLK_PERIOD * 3 },
-      ];
+    const BLUE = 'rgba(90,163,232,';
+    const BLUE2 = 'rgba(58,130,212,';
 
-      function resize() {
-        W = panel.offsetWidth || 400;
-        canvas.width  = W;
-        canvas.height = SIG_H * SIGS;
-      }
+    function resize() {
+      W = canvas.width = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+      buildNodes();
+    }
 
-      function getVal(sig, x) {
-        const t = Math.floor((x + offset) / sig.period);
-        if (sig.type === 'clock') {
-          return ((x + offset) % sig.period < sig.period / 2) ? 1 : 0;
+    function buildNodes() {
+      nodes = [];
+      const COLS = 12, ROWS = 14;
+      const gw = W / COLS, gh = H / ROWS;
+      for (let r = 0; r <= ROWS; r++) {
+        for (let c = 0; c <= COLS; c++) {
+          const jitter = 0;
+          nodes.push({
+            x: c * gw + jitter,
+            y: r * gh + jitter,
+            active: Math.random() > 0.35,
+            pulse: Math.random() * Math.PI * 2,
+            speed: 0.012 + Math.random() * 0.018
+          });
         }
-        const idx = t % sig.values.length;
-        return sig.values[idx];
       }
+    }
 
-      function draw() {
-        ctx.clearRect(0, 0, W, SIG_H * SIGS);
-        ctx.fillStyle = '#080d08';
-        ctx.fillRect(0, 0, W, SIG_H * SIGS);
+    const COLS = 12;
+    function getNode(r, c) {
+      return nodes[r * (COLS + 1) + c];
+    }
 
-        // Grid lines
-        ctx.strokeStyle = GRID;
-        ctx.lineWidth = 1;
-        for (let x = (CLK_PERIOD * 4) - (offset % (CLK_PERIOD * 4)); x < W; x += CLK_PERIOD * 4) {
-          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, SIG_H * SIGS); ctx.stroke();
-        }
+    function drawCircuit(t) {
+      ctx.clearRect(0, 0, W, H);
 
-        signals.forEach((sig, i) => {
-          const y = i * SIG_H;
-          const mid = y + SIG_H / 2;
-          const hi  = y + 5;
-          const lo  = y + SIG_H - 5;
+      const cx = W / 2, cy = H / 2;
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(angle);
+      ctx.translate(-cx, -cy);
 
-          ctx.strokeStyle = GREEN;
-          ctx.lineWidth = 1.5;
-          ctx.beginPath();
+      const ROWS = 14;
 
-          if (sig.type === 'clock') {
-            for (let x = 0; x < W; x++) {
-              const v  = getVal(sig, x);
-              const v2 = getVal(sig, x + 1);
-              const cy = v ? hi : lo;
-              if (x === 0) ctx.moveTo(x, cy); else ctx.lineTo(x, cy);
-              if (v !== v2) ctx.lineTo(x + 1, v2 ? hi : lo);
-            }
-          } else if (sig.type === 'logic') {
-            for (let x = 0; x < W; x++) {
-              const v  = getVal(sig, x);
-              const v2 = getVal(sig, x + 1);
-              const cy = v ? hi : lo;
-              if (x === 0) ctx.moveTo(x, cy); else ctx.lineTo(x, cy);
-              if (v !== v2) { ctx.lineTo(x, mid); ctx.lineTo(x + 1, v2 ? hi : lo); }
-            }
-          } else {
-            // Bus — draw transition chevrons + fill label
-            let px = 0;
-            let prevVal = getVal(sig, 0);
-            for (let x = 1; x < W; x++) {
-              const v = getVal(sig, x);
-              if (v !== prevVal || x === W - 1) {
-                // Draw bus box
-                const bx = px, bw = x - px;
-                ctx.strokeStyle = GREEN;
-                ctx.lineWidth = 1.5;
-                ctx.beginPath();
-                // top line with chevron start/end
-                ctx.moveTo(bx + 4, hi); ctx.lineTo(bx + bw - 4, hi);
-                // bottom line
-                ctx.moveTo(bx + 4, lo); ctx.lineTo(bx + bw - 4, lo);
-                // left chevron
-                ctx.moveTo(bx + 4, hi); ctx.lineTo(bx, mid);
-                ctx.moveTo(bx + 4, lo); ctx.lineTo(bx, mid);
-                // right chevron
-                ctx.moveTo(bx + bw - 4, hi); ctx.lineTo(bx + bw, mid);
-                ctx.moveTo(bx + bw - 4, lo); ctx.lineTo(bx + bw, mid);
-                ctx.stroke();
-                // Label
-                if (bw > 20) {
-                  ctx.fillStyle = GREEN2;
-                  ctx.fillRect(bx + 4, hi + 1, bw - 8, lo - hi - 2);
-                  ctx.fillStyle = '#7acc7a';
-                  ctx.font = `${Math.min(9, bw / 4)}px 'Space Mono', monospace`;
-                  ctx.textAlign = 'center';
-                  ctx.fillText(String(prevVal), bx + bw / 2, mid + 3);
-                }
-                px = x; prevVal = v;
-              }
+      // Draw traces (horizontal + vertical)
+      for (let r = 0; r <= ROWS; r++) {
+        for (let c = 0; c <= COLS; c++) {
+          const n = getNode(r, c);
+          if (!n.active) continue;
+
+          // horizontal
+          if (c < COLS) {
+            const n2 = getNode(r, c + 1);
+            if (n2.active && Math.random() > 0.08) {
+              const alpha = 0.15 + 0.25 * Math.sin(n.pulse + t * n.speed);
+              ctx.beginPath();
+              ctx.moveTo(n.x, n.y);
+              // elbow trace: go right then down/up to next
+              const midX = (n.x + n2.x) / 2;
+              ctx.lineTo(midX, n.y);
+              ctx.lineTo(midX, n2.y);
+              ctx.lineTo(n2.x, n2.y);
+              ctx.strokeStyle = BLUE + alpha + ')';
+              ctx.lineWidth = 1;
+              ctx.stroke();
             }
           }
-          ctx.stroke();
 
-          // Row separator
-          ctx.strokeStyle = GRID;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(0, y + SIG_H - 1);
-          ctx.lineTo(W, y + SIG_H - 1);
-          ctx.stroke();
-        });
-
-        // Cursor line
-        const curX = (W * 0.4) | 0;
-        ctx.strokeStyle = 'rgba(255,200,0,0.5)';
-        ctx.lineWidth = 1;
-        ctx.setLineDash([3, 3]);
-        ctx.beginPath(); ctx.moveTo(curX, 0); ctx.lineTo(curX, SIG_H * SIGS); ctx.stroke();
-        ctx.setLineDash([]);
-      }
-
-      let raf;
-      function animate() {
-        offset += 0.6;
-        simTime += 1;
-        document.getElementById('ms-time').textContent = Math.floor(simTime / 5) + ' ns';
-        draw();
-        raf = requestAnimationFrame(animate);
-      }
-
-      window.addEventListener('resize', () => { resize(); draw(); });
-      resize();
-      animate();
-    })();
-
-    // ── TERMINAL TYPEWRITER ───────────────────────────────────────────────────
-    (function() {
-      const body = document.getElementById('termBody');
-      const lines = [
-        { type: 'prompt', text: 'whoami' },
-        { type: 'out',    text: 'tarandeep lubana' },
-        { type: 'prompt', text: 'cat about.txt' },
-        { type: 'out',    text: 'Computer Engineer @ UofT' },
-        { type: 'out',    text: 'Working @ Toronto Hydro' },
-        { type: 'prompt', text: 'ls skills/' },
-        { type: 'out',    text: 'Verilog  PyTorch  C++  Python  FPGA' },
-        { type: 'prompt', text: 'curl portfolio.taran.dev' },
-        { type: 'out',    text: '→ bluestriker03.github.io' },
-        { type: 'prompt', text: '' },
-      ];
-
-      let li = 0, ci = 0;
-
-      function addLine(type, text) {
-        const el = document.createElement('span');
-        el.className = 'term-line';
-        if (type === 'prompt') {
-          el.innerHTML = `<span class="term-prompt">taran@portfolio:~$ </span><span class="term-cmd">${text}</span>`;
-        } else {
-          el.innerHTML = `<span class="term-out">${text}</span>`;
-        }
-        body.appendChild(el);
-        body.scrollTop = body.scrollHeight;
-        return el;
-      }
-
-      function typeLine() {
-        if (li >= lines.length) {
-          // restart
-          setTimeout(() => { body.innerHTML = ''; li = 0; ci = 0; typeLine(); }, 2000);
-          return;
-        }
-        const line = lines[li];
-        if (line.type === 'out') {
-          addLine('out', line.text);
-          li++; ci = 0;
-          setTimeout(typeLine, 120);
-        } else {
-          // type prompt character by character
-          if (ci === 0) addLine('prompt', '');
-          const el = body.lastChild;
-          const cmd = el.querySelector('.term-cmd');
-          cmd.textContent = line.text.slice(0, ci);
-          ci++;
-          if (ci <= line.text.length) {
-            setTimeout(typeLine, 60 + Math.random() * 40);
-          } else {
-            li++; ci = 0;
-            setTimeout(typeLine, 400);
+          // vertical
+          if (r < ROWS) {
+            const n2 = getNode(r + 1, c);
+            if (n2.active && Math.random() > 0.08) {
+              const alpha = 0.12 + 0.2 * Math.sin(n.pulse + t * n.speed + 1);
+              ctx.beginPath();
+              ctx.moveTo(n.x, n.y);
+              ctx.lineTo(n.x, n2.y);
+              ctx.strokeStyle = BLUE + alpha + ')';
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
           }
         }
       }
 
-      setTimeout(typeLine, 800);
-    })();
+      // Draw nodes (dots)
+      for (let r = 0; r <= ROWS; r++) {
+        for (let c = 0; c <= COLS; c++) {
+          const n = getNode(r, c);
+          if (!n.active) continue;
+          const pulse = 0.3 + 0.5 * Math.sin(n.pulse + t * n.speed * 2);
+          const size = 1.5 + pulse * 2;
+
+          // glow
+          const grd = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, size * 3);
+          grd.addColorStop(0, BLUE2 + (pulse * 0.6) + ')');
+          grd.addColorStop(1, BLUE2 + '0)');
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, size * 3, 0, Math.PI * 2);
+          ctx.fillStyle = grd;
+          ctx.fill();
+
+          // dot
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, size * 0.7, 0, Math.PI * 2);
+          ctx.fillStyle = BLUE + (0.5 + pulse * 0.4) + ')';
+          ctx.fill();
+        }
+      }
+
+      // Travelling signal pulses
+      const pulseCount = 5;
+      for (let i = 0; i < pulseCount; i++) {
+        const progress = ((t * 0.0004 + i / pulseCount) % 1);
+        const px = progress * W;
+        const py = (Math.sin(progress * Math.PI * 3 + i * 1.5) * 0.3 + 0.5) * H;
+
+        const grd = ctx.createRadialGradient(px, py, 0, px, py, 18);
+        grd.addColorStop(0, 'rgba(122,184,240,0.7)');
+        grd.addColorStop(1, 'rgba(122,184,240,0)');
+        ctx.beginPath();
+        ctx.arc(px, py, 18, 0, Math.PI * 2);
+        ctx.fillStyle = grd;
+        ctx.fill();
+      }
+
+      ctx.restore();
+    }
+
+    let frame = 0;
+    function loop(t) {
+      angle += 0.0008;
+      frame++;
+      // Rebuild nodes occasionally for variety
+      if (frame % 180 === 0) buildNodes();
+      drawCircuit(t);
+      requestAnimationFrame(loop);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    requestAnimationFrame(loop);
 
     // ── SCROLL FADE IN ────────────────────────────────────────────────────────
     const els = document.querySelectorAll('.fade');
@@ -724,3 +653,11 @@
       entries.forEach((e, i) => {
         if (e.isIntersecting) {
           setTimeout(() => e.target.classList.add('in'), i * 100);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
