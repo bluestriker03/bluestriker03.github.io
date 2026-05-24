@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tarandeep Lubana — Computer Engineering</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
   <style>
     :root {
       --b0: #0d1f3c;
@@ -15,49 +18,95 @@
       --b5: #b8d8f8;
       --text: #ddeeff;
       --muted: #7aacdc;
-      --border: rgba(90,163,232,0.18);
-      --circuit: rgba(100,170,240,0.35);
+      --border: rgba(90, 163, 232, 0.18);
+      --circuit: rgba(100, 170, 240, 0.35);
       --accent: #7ab8f0;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--b0); color: var(--text); overflow-x: hidden; }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--b0);
+      color: var(--text);
+      overflow-x: hidden;
+    }
 
     /* NAV */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 1.1rem 4rem;
-      background: rgba(13,31,60,0.92); backdrop-filter: blur(20px);
+      background: rgba(13, 31, 60, 0.92);
+      backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
+
     .logo {
-  cursor: default;
-}
-.logo-portrait {
-  font-family: 'Space Mono', monospace;
-  font-size: 1.8px;
-  line-height: 1.15;
-  letter-spacing: 0.05em;
-  color: var(--accent);
-  white-space: pre;
-  display: block;
-  opacity: 0.75;
-  transition: opacity 0.2s;
-}
-.logo:hover .logo-portrait {
-  opacity: 1;
-}
-    .logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+      cursor: default;
+    }
+
+    .logo-portrait {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.8px;
+      line-height: 1.15;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      white-space: pre;
+      display: block;
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+
+    .logo:hover .logo-portrait {
+      opacity: 1;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
     .nav-links a {
       font-family: 'Space Mono', monospace;
-      font-size: 0.72rem; font-weight: 400; color: var(--muted);
-      text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase;
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--b4); }
-    .nav-num { color: var(--accent); margin-right: 0.3rem; }
+
+    .nav-links a:hover {
+      color: var(--b4);
+    }
+
+    .nav-num {
+      color: var(--accent);
+      margin-right: 0.3rem;
+    }
 
     /* HERO */
     #hero {
@@ -80,12 +129,21 @@
 
     .hero-eyebrow {
       font-family: 'Space Mono', monospace;
-      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 1.4rem;
-      display: flex; align-items: center; gap: 0.8rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
     }
+
     .hero-eyebrow::before {
-      content: ''; width: 32px; height: 1px; background: var(--accent);
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
     }
 
     .hero-name-small {
@@ -125,46 +183,84 @@
     }
 
     .hero-actions {
-      display: flex; gap: 1rem; margin-top: 2.8rem; flex-wrap: wrap;
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.8rem;
+      flex-wrap: wrap;
     }
+
     .btn {
-      padding: 0.75rem 1.8rem; border-radius: 4px;
+      padding: 0.75rem 1.8rem;
+      border-radius: 4px;
       font-family: 'Space Mono', monospace;
-      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
-      text-decoration: none; transition: transform 0.18s, box-shadow 0.18s;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.18s, box-shadow 0.18s;
     }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-solid { background: var(--accent); color: #0d1f3c; }
-    .btn-solid:hover { box-shadow: 0 6px 24px rgba(90,163,232,0.4); }
-    .btn-ghost { background: transparent; color: var(--b5); border: 1.5px solid var(--accent); }
-    .btn-ghost:hover { background: rgba(90,163,232,0.1); }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-solid {
+      background: var(--accent);
+      color: #0d1f3c;
+    }
+
+    .btn-solid:hover {
+      box-shadow: 0 6px 24px rgba(90, 163, 232, 0.4);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--b5);
+      border: 1.5px solid var(--accent);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(90, 163, 232, 0.1);
+    }
 
     /* SSH BUTTON — distinct terminal style */
     .btn-ssh-wrap {
-      display: flex; flex-direction: column; gap: 0.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
     }
+
     .btn-ssh-label {
       font-family: 'Space Mono', monospace;
-      font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
       color: var(--muted);
     }
+
     .btn-ssh {
-      padding: 0.75rem 1.8rem; border-radius: 4px;
+      padding: 0.75rem 1.8rem;
+      border-radius: 4px;
       font-family: 'Space Mono', monospace;
-      font-size: 0.75rem; letter-spacing: 0.1em;
-      background: rgba(122,184,240,0.07);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      background: rgba(122, 184, 240, 0.07);
       color: var(--accent);
-      border: 1px dashed rgba(122,184,240,0.45);
+      border: 1px dashed rgba(122, 184, 240, 0.45);
       cursor: pointer;
       transition: transform 0.18s, background 0.18s, border-color 0.18s;
       white-space: nowrap;
     }
+
     .btn-ssh:hover {
       transform: translateY(-2px);
-      background: rgba(122,184,240,0.14);
+      background: rgba(122, 184, 240, 0.14);
       border-color: var(--accent);
     }
-    .ssh-prompt { color: var(--b4); }
+
+    .ssh-prompt {
+      color: var(--b4);
+    }
 
     /* CIRCUIT CANVAS */
     .hero-right {
@@ -175,16 +271,22 @@
       justify-content: center;
       z-index: 1;
     }
+
     #circuitCanvas {
       width: 100%;
       height: 100%;
       position: absolute;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
     }
 
     /* Subtle bg grid */
     body::before {
-      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
       background-image:
         linear-gradient(var(--border) 1px, transparent 1px),
         linear-gradient(90deg, var(--border) 1px, transparent 1px);
@@ -193,160 +295,495 @@
     }
 
     /* SECTIONS */
-    section { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 7rem 2rem; }
+    section {
+      position: relative;
+      z-index: 1;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 7rem 2rem;
+    }
 
     .label {
-      display: inline-flex; align-items: center; gap: 0.6rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
       font-family: 'Space Mono', monospace;
-      font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
     }
-    .label::after { content: ''; display: block; width: 40px; height: 1px; background: var(--b3); }
+
+    .label::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--b3);
+    }
+
     h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 600;
-      color: var(--text); line-height: 1.15;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.15;
     }
-    h2 em { font-style: italic; color: var(--accent); }
+
+    h2 em {
+      font-style: italic;
+      color: var(--accent);
+    }
 
     /* ABOUT */
-    #about .about-wrap { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: start; margin-top: 3rem; }
-    .big-initial {
-      font-family: 'Cormorant Garamond', serif; font-size: 9rem; line-height: 0.85;
-      color: var(--b2); font-weight: 600; font-style: italic; margin-bottom: 2rem; display: block;
+    #about .about-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 3rem;
     }
-    .about-sidebar-facts { display: flex; flex-direction: column; gap: 1.2rem; }
-    .fact { border-left: 2px solid var(--b3); padding-left: 1rem; }
-    .fact-label { font-family: 'Space Mono', monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
-    .fact-value { font-size: 0.95rem; color: var(--text); font-weight: 500; margin-top: 0.2rem; }
-    .about-body p { font-size: 1rem; color: var(--muted); line-height: 1.9; margin-bottom: 1.2rem; font-weight: 300; }
-    .about-body p strong { color: var(--text); font-weight: 500; }
+
+    .big-initial {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 9rem;
+      line-height: 0.85;
+      color: var(--b2);
+      font-weight: 600;
+      font-style: italic;
+      margin-bottom: 2rem;
+      display: block;
+    }
+
+    .about-sidebar-facts {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .fact {
+      border-left: 2px solid var(--b3);
+      padding-left: 1rem;
+    }
+
+    .fact-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    .fact-value {
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 500;
+      margin-top: 0.2rem;
+    }
+
+    .about-body p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+      font-weight: 300;
+    }
+
+    .about-body p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
     .skills-section-title {
       font-family: 'Space Mono', monospace;
-      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em;
-      color: var(--accent); font-weight: 400; margin-top: 1.8rem; margin-bottom: 0.7rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 400;
+      margin-top: 1.8rem;
+      margin-bottom: 0.7rem;
     }
-    .skills-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
     .skill {
-      font-size: 0.78rem; color: var(--b5); font-weight: 500;
-      border: 1px solid rgba(90,163,232,0.25); background: rgba(90,163,232,0.08);
-      padding: 0.35rem 0.9rem; border-radius: 3px; transition: background 0.2s;
+      font-size: 0.78rem;
+      color: var(--b5);
+      font-weight: 500;
+      border: 1px solid rgba(90, 163, 232, 0.25);
+      background: rgba(90, 163, 232, 0.08);
+      padding: 0.35rem 0.9rem;
+      border-radius: 3px;
+      transition: background 0.2s;
     }
-    .skill:hover { background: rgba(90,163,232,0.2); }
+
+    .skill:hover {
+      background: rgba(90, 163, 232, 0.2);
+    }
 
     /* EXPERIENCE */
-    #experience .exp-list { margin-top: 3rem; }
+    #experience .exp-list {
+      margin-top: 3rem;
+    }
+
     .exp-row {
-      display: grid; grid-template-columns: 200px 1fr; gap: 3rem;
-      align-items: start; padding: 2.2rem 0; border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3rem;
+      align-items: start;
+      padding: 2.2rem 0;
+      border-bottom: 1px solid var(--border);
     }
-    .exp-row:first-child { border-top: 1px solid var(--border); }
-    .exp-date { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--muted); }
-    .exp-place { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; font-weight: 300; font-style: italic; }
-    .exp-role { font-size: 1.05rem; font-weight: 500; color: var(--text); }
-    .exp-co { font-size: 0.85rem; color: var(--accent); margin-top: 0.2rem; font-weight: 400; margin-bottom: 0.8rem; }
-    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .exp-row:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .exp-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .exp-place {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .exp-role {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .exp-co {
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-top: 0.2rem;
+      font-weight: 400;
+      margin-bottom: 0.8rem;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
     .exp-bullets li {
-      font-size: 0.88rem; color: var(--muted); line-height: 1.7;
-      font-weight: 300; padding-left: 1rem; position: relative;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+      padding-left: 1rem;
+      position: relative;
     }
-    .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--b3); font-size: 0.8rem; }
+
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--b3);
+      font-size: 0.8rem;
+    }
 
     /* PROJECTS */
     #projects .proj-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 1px; margin-top: 3rem;
-      border: 1px solid var(--border); background: var(--border);
-      border-radius: 14px; overflow: hidden;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      margin-top: 3rem;
+      border: 1px solid var(--border);
+      background: var(--border);
+      border-radius: 14px;
+      overflow: hidden;
     }
+
     .proj-card {
-      background: rgba(17,34,68,0.85); padding: 2rem 1.8rem;
-      transition: background 0.2s; backdrop-filter: blur(8px);
+      background: rgba(17, 34, 68, 0.85);
+      padding: 2rem 1.8rem;
+      transition: background 0.2s;
+      backdrop-filter: blur(8px);
     }
-    .proj-card:hover { background: rgba(58,130,212,0.15); }
+
+    .proj-card:hover {
+      background: rgba(58, 130, 212, 0.15);
+    }
+
     .proj-num {
-      font-family: 'Cormorant Garamond', serif; font-size: 2.5rem;
-      color: var(--b3); font-weight: 600; line-height: 1; margin-bottom: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      color: var(--b3);
+      font-weight: 600;
+      line-height: 1;
+      margin-bottom: 1rem;
     }
-    .proj-title { font-size: 1rem; font-weight: 500; color: var(--b5); margin-bottom: 0.3rem; }
-    .proj-context { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--accent); font-weight: 400; margin-bottom: 0.7rem; }
-    .proj-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; font-weight: 300; }
-    .proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .proj-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--b5);
+      margin-bottom: 0.3rem;
+    }
+
+    .proj-context {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      font-weight: 400;
+      margin-bottom: 0.7rem;
+    }
+
+    .proj-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      font-weight: 300;
+    }
+
+    .proj-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
     .proj-tag {
       font-family: 'Space Mono', monospace;
-      font-size: 0.65rem; color: var(--accent); font-weight: 400;
-      background: rgba(122,184,240,0.15); padding: 0.2rem 0.6rem;
-      border-radius: 3px; letter-spacing: 0.04em;
+      font-size: 0.65rem;
+      color: var(--accent);
+      font-weight: 400;
+      background: rgba(122, 184, 240, 0.15);
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
     }
 
     /* EXTRAS */
-    #extras .extras-grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-    .extra-card {
-      background: rgba(17,34,68,0.85); border: 1px solid var(--border);
-      border-radius: 12px; padding: 1.6rem; backdrop-filter: blur(8px); transition: background 0.2s;
+    #extras .extras-grid {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
     }
-    .extra-card:hover { background: rgba(58,130,212,0.15); }
-    .extra-icon { font-size: 1.6rem; margin-bottom: 0.8rem; display: block; }
-    .extra-title { font-size: 0.95rem; font-weight: 500; color: var(--text); margin-bottom: 0.2rem; }
-    .extra-sub { font-size: 0.78rem; color: var(--accent); margin-bottom: 0.7rem; }
-    .extra-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+    .extra-card {
+      background: rgba(17, 34, 68, 0.85);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.6rem;
+      backdrop-filter: blur(8px);
+      transition: background 0.2s;
+    }
+
+    .extra-card:hover {
+      background: rgba(58, 130, 212, 0.15);
+    }
+
+    .extra-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .extra-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .extra-sub {
+      font-size: 0.78rem;
+      color: var(--accent);
+      margin-bottom: 0.7rem;
+    }
+
+    .extra-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
 
     /* CONTACT */
-    #contact { padding-bottom: 10rem; }
+    #contact {
+      padding-bottom: 10rem;
+    }
+
     .contact-box {
-      margin-top: 3rem; background: rgba(26,58,106,0.7); border: 1px solid rgba(90,163,232,0.25); border-radius: 16px; padding: 4rem;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+      margin-top: 3rem;
+      background: rgba(26, 58, 106, 0.7);
+      border: 1px solid rgba(90, 163, 232, 0.25);
+      border-radius: 16px;
+      padding: 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
     }
+
     .contact-left h3 {
-      font-family: 'Cormorant Garamond', serif; font-size: 2.4rem;
-      color: var(--b5); font-weight: 600; line-height: 1.2;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      color: var(--b5);
+      font-weight: 600;
+      line-height: 1.2;
     }
-    .contact-left h3 em { font-style: italic; color: var(--accent); }
-    .contact-left p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; margin-top: 1rem; font-weight: 300; }
-    .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
+
+    .contact-left h3 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .contact-left p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.8;
+      margin-top: 1rem;
+      font-weight: 300;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
     .c-link {
-      display: flex; align-items: center; gap: 1rem; color: var(--b5);
-      text-decoration: none; font-size: 0.88rem; font-weight: 400;
-      padding: 1rem 1.2rem; border-radius: 8px;
-      border: 1px solid rgba(90,163,232,0.2);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--b5);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 400;
+      padding: 1rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid rgba(90, 163, 232, 0.2);
       transition: background 0.2s, border-color 0.2s;
     }
-    .c-link:hover { background: rgba(90,163,232,0.12); border-color: var(--accent); }
+
+    .c-link:hover {
+      background: rgba(90, 163, 232, 0.12);
+      border-color: var(--accent);
+    }
+
     .c-icon {
-      width: 36px; height: 36px; border-radius: 7px;
-      background: rgba(90,163,232,0.15);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 7px;
+      background: rgba(90, 163, 232, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
     }
 
     footer {
-      position: relative; z-index: 1; text-align: center; padding: 2rem;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem;
       font-family: 'Space Mono', monospace;
-      font-size: 0.75rem; color: var(--muted); border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
     }
 
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-    .fade { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
-    .fade.in { opacity: 1; transform: none; }
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .fade.in {
+      opacity: 1;
+      transform: none;
+    }
 
     @media (max-width: 860px) {
-      nav { padding: 1rem 1.5rem; } .nav-links { gap: 1rem; }
-      #hero { grid-template-columns: 1fr; padding: 2rem; padding-top: 6rem; }
-      .hero-right { display: none; }
-      #about .about-wrap { grid-template-columns: 1fr; gap: 2rem; } .big-initial { display: none; }
-      #projects .proj-grid { grid-template-columns: 1fr; }
-      .exp-row { grid-template-columns: 1fr; gap: 0.5rem; }
-      .contact-box { grid-template-columns: 1fr; padding: 2.5rem; }
-      #extras .extras-grid { grid-template-columns: 1fr; }
-      section { padding: 5rem 1.5rem; }
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      #hero {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+        padding-top: 6rem;
+      }
+
+      .hero-right {
+        display: none;
+      }
+
+      #about .about-wrap {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .big-initial {
+        display: none;
+      }
+
+      #projects .proj-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .exp-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+
+      .contact-box {
+        grid-template-columns: 1fr;
+        padding: 2.5rem;
+      }
+
+      #extras .extras-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 5rem 1.5rem;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <nav>
     <div class="logo">
-  <pre class="logo-portrait">
+      <pre class="logo-portrait">
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠟⠛⠛⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⢀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠁⠀⢀⣀⣠⣤⣼⣦⣄⠀⠀⠀⠀⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
@@ -372,8 +809,9 @@
 ⣿⣿⣿⣿⣿⣟⡰⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣻⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣻⣷⣄⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣾⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣯⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣼⣿⣿⣿⣿⣿⣿⣿⣿</pre>
-</div></parameter>
- <ul class="nav-links">
+    </div>
+    </parameter>
+    <ul class="nav-links">
       <li><a href="#about"><span class="nav-num">0—</span>About</a></li>
       <li><a href="#experience"><span class="nav-num">1—</span>Experience</a></li>
       <li><a href="#projects"><span class="nav-num">2—</span>Projects</a></li>
@@ -417,15 +855,27 @@
       <div class="about-sidebar">
 
         <div class="about-sidebar-facts">
-          <div class="fact"><div class="fact-label">University</div><div class="fact-value">University of Toronto</div></div>
-          <div class="fact"><div class="fact-label">Program</div><div class="fact-value">Computer Engineering</div></div>
-          <div class="fact"><div class="fact-label">Location</div><div class="fact-value">Toronto, ON</div></div>
+          <div class="fact">
+            <div class="fact-label">University</div>
+            <div class="fact-value">University of Toronto</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Program</div>
+            <div class="fact-value">Computer Engineering</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Location</div>
+            <div class="fact-value">Toronto, ON</div>
+          </div>
         </div>
       </div>
       <div class="about-body">
-        <p>Currently working at <strong>Toronto Hydro</strong>, getting a close look at how the electrical grid is managed and maintained.</p>
-        <p>I'm drawn to deep learning advancements in healthcare and the implications that come with them. On the hardware side, I enjoy building low-level systems in Verilog and experimenting with FPGAs.</p>
-        <p>Outside of engineering, I love picking up new activities. Currently fixated on bits of rock climbing, pickleball, hot pilates, and hiking.</p>
+        <p>Currently working at <strong>Toronto Hydro</strong>, getting a close look at how the electrical grid is
+          managed and maintained.</p>
+        <p>I'm drawn to deep learning advancements in utility and the implications that come with them. On the hardware
+          side, I enjoy building low-level systems in Verilog and experimenting with FPGAs.</p>
+        <p>Outside of engineering, I love picking up new activities. Currently fixated on bits of rock climbing,
+          pickleball, hot pilates, and hiking.</p>
         <div class="skills-section-title">Technical Skills</div>
         <div class="skills-row">
           <span class="skill">Python</span><span class="skill">C</span><span class="skill">C++</span>
@@ -461,10 +911,17 @@
           <div class="exp-role">Senior Technical Student, Grid Maintenance</div>
           <div class="exp-co">Toronto Hydro</div>
           <ul class="exp-bullets">
-            <li>Utilized SAP to dispatch inspectors for site visits, ensuring timely scheduling and accurate tracking of field operations.</li>
-            <li>Generated weekly analytical reports with Alteryx, providing insights to optimize grid maintenance activities.</li>
-            <li>Managed a $3.4M budget through Excel tracking and analyst collaboration, mitigating underspend/overspend risks to meet year-end targets.</li>
-            <li>Coordinated contractor schedules to align deliverables with program timelines, ensuring on-time completion of all assigned units.</li>
+            <li>Reduced overspend risk by 25% across a $3.4M budget by monitoring financial variances in Excel and
+              partnering with analysts to implement corrective actions.</li>
+            <li>Increased daily request processing efficiency by 40% by automating tracking workflows and streamlining
+              data processes using Power Automate and Power Query, demonstrating initiative in improving tools and
+              processes.</li>
+            <li>Enhanced preventative program efficiency by conducting site inspections and collaborating with
+              contractors to identify and implement process improvements.</li>
+            <li>Improved spill response efficiency by standardizing oil spill reporting procedures and developing a
+              Power Automate model to flag high-priority P1 incidents.</li>
+            <li>Increased analyst productivity by 20% by developing SAP automation scripts to streamline the material
+              ordering process.</li>
           </ul>
         </div>
       </div>
@@ -478,9 +935,12 @@
           <div class="exp-role">Digital Health Design & Evaluation Research Assistant</div>
           <div class="exp-co">WHEEL Lab, University of Toronto</div>
           <ul class="exp-bullets">
-            <li>Programmed behavioral codes in ObserverXT for data analysis to support conclusions in published research studies.</li>
-            <li>Conducted t-tests comparing AI Scribe results to non-AI outputs using Excel, R scripts, and Python to generate insights for a published study.</li>
-            <li>Coordinated team schedule via Google Calendar, ensuring regular meetings and timely project completion.</li>
+            <li>Post-processed and analyzed research data by conducting statistical tests (t-tests) comparing AI and
+              non-AI outputs using Excel, R, and Python, ensuring data quality aligned with study expectations.</li>
+            <li>Coordinated team schedule using shared tools, ensuring regular meetings and timely project completion.
+            </li>
+            <li>Programmed behavioral codes in ObserverXT for data analysis and to support conclusions in research
+              studies.</li>
           </ul>
         </div>
       </div>
@@ -494,10 +954,14 @@
           <div class="exp-role">Events & Communication Assistant</div>
           <div class="exp-co">Mobility Network, University of Toronto</div>
           <ul class="exp-bullets">
-            <li>Analyzed social media metrics to determine yearly KPIs and inform communication strategy.</li>
-            <li>Created a symposium booklet and event posters using Adobe Suite, Canva, and Inkscape — received positive feedback from organizers.</li>
-            <li>Coordinated logistics for 10+ events with 40–60 attendees each, ensuring smooth execution.</li>
-            <li>Reviewed and edited video captions for AODA compliance by comparing transcripts to real-time video.</li>
+            <li>Analyzed social media data and reported on yearly KPIs, demonstrating data collection and reporting
+              skills applicable to test data archiving.</li>
+            <li>Coordinated logistics for 10+ events with 40–60 attendees, ensuring smooth execution through strong
+              organizational and project management skills.</li>
+            <li>Communicated professionally with stakeholders, increasing engagement and demonstrating strong oral and
+              written communication.</li>
+            <li>Created documentation and marketing materials using Adobe Suite, Canva, and Inkscape, contributing to
+              clear and professional deliverables.</li>
           </ul>
         </div>
       </div>
@@ -516,32 +980,42 @@
         <div class="proj-num">01</div>
         <div class="proj-title">Brain Tumor Classification</div>
         <div class="proj-context">Applied Fundamentals of Deep Learning · May – Aug 2024</div>
-        <p class="proj-desc">Built a 4-class CNN brain tumor classifier in PyTorch achieving 94.33% test accuracy on 28,000 MRI scans, using a 70/20/10 data split to maximize generalization across unseen data.</p>
-        <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">PyTorch</span><span class="proj-tag">CNN</span><span class="proj-tag">NumPy</span></div>
+        <p class="proj-desc">Built a 4-class CNN brain tumor classifier in PyTorch achieving 94.33% test accuracy on
+          28,000 MRI scans, using a 70/20/10 data split to maximize generalization across unseen data.</p>
+        <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">PyTorch</span><span
+            class="proj-tag">CNN</span><span class="proj-tag">NumPy</span></div>
       </div>
 
       <div class="proj-card">
         <div class="proj-num">02</div>
         <div class="proj-title">GIS Accessibility Map App</div>
         <div class="proj-context">Software & Communication Design · Jan – Apr 2024</div>
-        <p class="proj-desc">Developed a GIS map application in C++ using OSM data to support individuals with accessibility requirements. Implemented multi-destination Dijkstra with parallel programming and designed an intuitive GTK GUI.</p>
-        <div class="proj-tags"><span class="proj-tag">C++</span><span class="proj-tag">OSM</span><span class="proj-tag">GTK</span><span class="proj-tag">Dijkstra</span><span class="proj-tag">Git</span></div>
+        <p class="proj-desc">Developed a GIS map application in C++ using OSM data to support individuals with
+          accessibility requirements. Implemented multi-destination Dijkstra with parallel programming and designed an
+          intuitive GTK GUI.</p>
+        <div class="proj-tags"><span class="proj-tag">C++</span><span class="proj-tag">OSM</span><span
+            class="proj-tag">GTK</span><span class="proj-tag">Dijkstra</span><span class="proj-tag">Git</span></div>
       </div>
 
       <div class="proj-card">
         <div class="proj-num">03</div>
         <div class="proj-title">Dots & Boxes on FPGA</div>
         <div class="proj-context">Computer Architecture · Jan – Apr 2024</div>
-        <p class="proj-desc">Built a 2-player game in C on an FPGA board with hardware inputs, game animations, randomized trap boxes in Level 2, real-time score updates, and audio feedback via FPGA I/O.</p>
-        <div class="proj-tags"><span class="proj-tag">C</span><span class="proj-tag">FPGA</span><span class="proj-tag">Embedded</span><span class="proj-tag">Hardware I/O</span></div>
+        <p class="proj-desc">Built a 2-player game in C on an FPGA board with hardware inputs, game animations,
+          randomized trap boxes in Level 2, real-time score updates, and audio feedback via FPGA I/O.</p>
+        <div class="proj-tags"><span class="proj-tag">C</span><span class="proj-tag">FPGA</span><span
+            class="proj-tag">Embedded</span><span class="proj-tag">Hardware I/O</span></div>
       </div>
 
       <div class="proj-card">
         <div class="proj-num">04</div>
         <div class="proj-title">RentSafeTO Reporting Redesign</div>
         <div class="proj-context">Engineering Strategies & Practice II · Jan – Apr 2022</div>
-        <p class="proj-desc">As Project Manager, led the redesign of the City of Toronto's RentSafeTO public reporting system. Defined the project schedule, assessed requirements, and managed a team to meet all stakeholder goals.</p>
-        <div class="proj-tags"><span class="proj-tag">Project Management</span><span class="proj-tag">Systems Design</span><span class="proj-tag">UX</span></div>
+        <p class="proj-desc">As Project Manager, led the redesign of the City of Toronto's RentSafeTO public reporting
+          system. Defined the project schedule, assessed requirements, and managed a team to meet all stakeholder goals.
+        </p>
+        <div class="proj-tags"><span class="proj-tag">Project Management</span><span class="proj-tag">Systems
+            Design</span><span class="proj-tag">UX</span></div>
       </div>
 
     </div>
@@ -731,4 +1205,5 @@
     els.forEach(el => obs.observe(el));
   </script>
 </body>
+
 </html>
